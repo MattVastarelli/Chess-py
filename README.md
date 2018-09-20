@@ -1,0 +1,2 @@
+# Chess-py
+Python Chess
