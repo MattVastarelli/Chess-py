@@ -1,2 +1,5 @@
-# Chess-py
-Python Chess
+# PyChess 
+
+### Authors
+* Evan Perry
+* Matthew Vastarelli
