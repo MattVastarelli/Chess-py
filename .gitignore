@@ -25,7 +25,7 @@ wheels/
 *.egg
 .idea
 idea
-.idea/
+.idea\
 MANIFEST
 
 # PyInstaller
@@ -95,6 +95,7 @@ venv.bak/
 .idea
 idea
 .idea/
+.idea\
 
 # Spyder project settings
 .spyderproject
