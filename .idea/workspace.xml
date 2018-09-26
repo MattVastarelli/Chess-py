@@ -17,8 +17,8 @@
       <file leaf-file-name="chessPiece.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Models/chessPiece.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="37">
+              <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -138,6 +138,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -182,8 +183,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Models/chessPiece.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="37">
+          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
         </state>
       </provider>
     </entry>
