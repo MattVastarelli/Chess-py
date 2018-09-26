@@ -47,5 +47,3 @@ class Pawn(ChessPiece):
         self.valid_moves = [(1, 0)]
 
 
-def foo():
-    print("bar")
