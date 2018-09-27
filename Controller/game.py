@@ -50,9 +50,6 @@ class Game:
         self.blk_pawn_7 = chessPiece.Pawn('Black', '7')
         self.blk_pawn_8 = chessPiece.Pawn('Black', '8')
 
-
-
-
     # checks to see if a game is oven and who won
     def is_game_done(self, King):
         if chessPiece.King.is_alive is False:
@@ -118,6 +115,7 @@ class Game:
         self.game_board[1][6] = self.blk_pawn_7
         self.game_board[1][7] = self.blk_pawn_8
 
+    # make the display matrix
     def make_display_board(self):
         # white back row
         self.display_board[7][0] = self.whi_rook_1.get_display_name()
@@ -159,10 +157,10 @@ class Game:
         self.display_board[1][6] = self.blk_pawn_7.get_display_name()
         self.display_board[1][7] = self.blk_pawn_8.get_display_name()
 
-
+    # return matrix of objects
     def get_board_state(self):
         return self.game_board
 
-
+    # return matrix of display names
     def get_display_board(self):
         return self.display_board
