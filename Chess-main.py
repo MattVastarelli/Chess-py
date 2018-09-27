@@ -5,7 +5,7 @@ from Controller import game
 # TODO need to address that it can only move forward likely through controller
 # TODO have some way of tracking the location of a given piece likely dict of tuples and spot to piece
 # TODO methods for taking a piece, telling if a spot is occupied, getting a piece back, and captured piece list
-
+# TODO setters to model / game to change values ie set a piece as captured
 
 testGame = game.Game()
 testGame.fill_board()
