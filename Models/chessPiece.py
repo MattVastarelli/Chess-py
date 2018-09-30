@@ -17,7 +17,7 @@ class ChessPiece:
         return self.name
 
     def get_display_name(self):
-        return self.displayName
+        return self.color + self.name + str(self.number)
 
     def get_color(self):
         return self.color
@@ -43,7 +43,6 @@ class ChessPiece:
 
     def remove_piece(self):
         self.is_alive = False
-
 
 
 class Pawn(ChessPiece):

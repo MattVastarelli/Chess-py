@@ -163,4 +163,6 @@ class Game:
 
     # return matrix of display names
     def get_display_board(self):
+        self.game_board[7][0]
         return self.display_board
+
