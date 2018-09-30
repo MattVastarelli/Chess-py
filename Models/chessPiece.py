@@ -1,23 +1,21 @@
 class ChessPiece:
+    # main chess piece class from which the pieces will inherit
     def __init__(self, color, number):
         self.color = color
         self.number = number
         self.name = ""
         self.is_alive = True
+        self.valid_moves = list()
         # valid moves are represented as a list of tuples were
         # the first item is the X axis and second the Y axis
-        self.valid_moves = list()
-        self.is_promoted = False  # for pawn only
+        self.is_promoted = False  # for pawn
+        self.move_through_piece = False
         # can the piece move to a given spot if its path
         # is obstructed by another piece
-        self.move_through_piece = False
 
     # various getters
     def get_name(self):
         return self.name
-
-    def get_display_name(self):
-        return self.color + self.name + str(self.number)
 
     def get_color(self):
         return self.color
@@ -32,19 +30,23 @@ class ChessPiece:
         return self.is_promoted
 
     def get_display_name(self):
+        # construct the display name
         return self.color + self.name + self.number
 
     def get_move_through(self):
+        # for knight
         return self.move_through_piece
 
     # various setters
     def promote(self):
+        # for pawn
         self.is_promoted = True
 
     def remove_piece(self):
         self.is_alive = False
 
 
+# the inherited piece classes
 class Pawn(ChessPiece):
     def __init__(self, color, number):
         ChessPiece.__init__(self, color, number)
