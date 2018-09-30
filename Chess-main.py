@@ -10,6 +10,7 @@ def main():
     from Controller import game
     from Views import printHelper
 
+
     test_game = game.Game()
     test_board = board.Board()
     test_board.fill_board()
