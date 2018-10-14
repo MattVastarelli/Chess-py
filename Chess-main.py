@@ -1,9 +1,8 @@
 # TODO have to handle castling
 # TODO need to address that it can only move forward likely through controller
-# TODO have some way of tracking the location of a given piece likely dict of tuples and spot to piece
+# TODO stop pieces that cant move through others from doing so
 # TODO methods for taking a piece, telling if a spot is occupied, getting a piece back, and captured piece list
-# TODO setters to model / game to change values ie set a piece as captured
-
+# TODO the gui has to execute the logic as it may not be able to be sleept /threaded
 
 def main():
     from Models import board
@@ -11,15 +10,9 @@ def main():
     from Views import printHelper
     from Views import GUI
 
-
-    test_game = game.Game()
-    test_board = board.Board()
     test_gui =  GUI.tkGui()
 
-    test_gui.showStartBoard()
-
-    test_board.fill_board()
-    printHelper.print_board(test_board.get_board_state())
+    test_gui.show_board()
 
 
 if __name__ == '__main__':
