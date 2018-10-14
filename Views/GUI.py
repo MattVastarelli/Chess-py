@@ -1,11 +1,13 @@
 import tkinter as tk
 import tkinter.messagebox as mb
 from PIL import Image, ImageTk
+from Views import guiHelper
 from Models import board
 from Controller import game
 
-class tkGui:
 
+class TkGui:
+    # main GUI class to build the gui and launch call the controller methods
     def __init__(self):
         self.top = tk.Tk()
         self.event_new = ''
@@ -16,9 +18,8 @@ class tkGui:
         self.event_exit = ''
         self.testphoto = Image.open('crown.png')
         self.tkphoto = ImageTk.PhotoImage(self.testphoto)
-        self.click_count = 0
-        self.click_1 = tuple()
-        self.click_2 = tuple()
+
+        self.helper = guiHelper.GuiHelper()
 
     # This builds the menu
     def build_menu(self, parent):
@@ -41,24 +42,11 @@ class tkGui:
 
         return menubar
 
-    # This shows that a cell has been clicked and registers the input
-    def event_click(self, row, col):
-        self.click_count += 1
-        # remember the first click
-        if self.click_count is 1:
-            self.click_1 = (row, col)
-        else:
-            # check to see if two clicks have been made
-            self.click_2 = (row, col)
-            self.click_count = 0
-
-        # mb.showinfo("cells", "Cell Clicked: rows:{}, col:{}".format(row, col))
-
     # This is just to represent what we plan to do later, meaningless at this point.
     def function_tabs(self,):
         mb.showinfo("Test", "to be developed later")
 
-    # We build the chess board
+    # build the chess board
     def build_chess_board(self, parent):
         outer = tk.Frame(parent, border=5, relief='sunken')
         inner = tk.Frame(outer)
@@ -75,23 +63,23 @@ class tkGui:
                 if clr is True:
                     if row_num > 1 and row_num < 6:
                         cell = tk.Button(inner, text="", width="20", height="7", background="sandybrown",
-                                            command=lambda r=row, c=col: self.event_click(r, c))
+                                            command=lambda r=row, c=col: self.helper.event_click(r, c))
                         cell.grid(row=row, column=col)
                     else:
                         cell = tk.Button(inner, text="", width="143", height="100", background="sandybrown",
-                                            image=self.tkphoto, command=lambda r=row, c=col: self.event_click(r, c))
+                                        image=self.tkphoto, command=lambda r=row, c=col: self.helper.event_click(r, c))
 
                         cell.grid(row=row, column=col)
                     clr = False
                 elif clr is False:
                     if row_num > 1 and row_num < 6:
                         cell = tk.Button(inner, text=" ", width="20", height="7", background="saddlebrown",
-                                            command=lambda r=row, c=col: self.event_click(r, c))
+                                            command=lambda r=row, c=col: self.helper.event_click(r, c))
 
                         cell.grid(row=row, column=col)
                     else:
                         cell = tk.Button(inner, text=" ", width="143", height="100", background="saddlebrown",
-                                            image=self.tkphoto, command=lambda r=row, c=col: self.event_click(r, c))
+                                        image=self.tkphoto, command=lambda r=row, c=col: self.helper.event_click(r, c))
 
                         cell.grid(row=row, column=col)
 

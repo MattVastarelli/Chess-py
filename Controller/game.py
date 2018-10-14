@@ -15,6 +15,15 @@ class Game:
         if chessPiece.King.is_alive is False:
             return chessPiece.King.get_color() + ' won'
 
+    def find_move_value(self, start_pos, end_pos):
+        # find the move distance
+        row = end_pos[0] - start_pos[0]
+        col = end_pos[1] - start_pos[1]
+
+        move = (row, col)
+
+        return move
+
     def is_move_valid(self, move):
         # checks to see  if a given move sent as a tuple is valid
         if move in chessPiece.King.get_valid_moves():

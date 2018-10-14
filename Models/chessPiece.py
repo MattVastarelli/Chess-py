@@ -59,7 +59,9 @@ class Rook(ChessPiece):
         ChessPiece.__init__(self, color, number)
         self.name = 'Rook'
         self.valid_moves = [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
-                            (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7)]
+                            (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7),
+                            (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
+                            (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7)]
 
 
 class Knight(ChessPiece):
@@ -67,14 +69,15 @@ class Knight(ChessPiece):
         ChessPiece.__init__(self, color, number)
         self.name = 'Knight'
         self.move_through_piece = True
-        self.valid_moves = [(1, 2), (2, 1)]
+        self.valid_moves = [(1, 2), (2, 1), (-1, -2), (-2, -1), (-1, 2), (-2, 1), (1, -2), (2, -1)]
 
 
 class Bishop(ChessPiece):
     def __init__(self, color, number):
         ChessPiece.__init__(self, color, number)
         self.name = 'Bishop'
-        self.valid_moves = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)]
+        self.valid_moves = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7),
+                            (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)]
 
 
 class Queen(ChessPiece):
@@ -83,12 +86,15 @@ class Queen(ChessPiece):
         self.name = 'Queen'
         self.valid_moves = [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
                             (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7),
-                            (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)]
+                            (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7),
+                            (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
+                            (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
+                            (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)]
 
 
 class King(ChessPiece):
     def __init__(self, color, number):
         ChessPiece.__init__(self, color, number)
         self.name = 'King'
-        self.valid_moves = [(1, 0), (0, 1), (1, 1)]
+        self.valid_moves = [(1, 0), (0, 1), (1, 1), (-1, 0), (0, -1), (-1, 1), (-1, -1), (1, -1)]
 
