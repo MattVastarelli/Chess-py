@@ -1,6 +1,6 @@
 import tkinter as Chess
 import tkinter.messagebox as mb
-
+from PIL import Image, ImageTk
 
 class tkGui:
 
@@ -11,6 +11,9 @@ class tkGui:
         self.eventSave = ''
         self.eventHelp = ''
         self.eventAbout = ''
+        self.eventExit = ''
+        self.testphoto = Image.open('crown.png')
+        self.tkphoto = ImageTk.PhotoImage(self.testphoto)
 
     # This builds the menu
     def buildMenu(self, parent):
@@ -47,28 +50,42 @@ class tkGui:
         inner = Chess.Frame(outer)
         inner.pack()
         clr = True
+
+        rowNum = 0
         for row in range(8):  # This for loop builds the board while also alternating black and white squares
             if row % 2 == 0:
                 clr = True
             if row % 2 != 0:
                 clr = False
             for col in range(8):
-                if clr == True:
-                    cell = Chess.Button(inner, text=" ", width="20", height="7", background="white",
-                                        command=lambda r=row, c=col: self.eventClick(r, c))
+                if clr is True:
+                    if rowNum > 1 and rowNum < 6:
+                        cell = Chess.Button(inner, text="", width="20", height="7", background="sandybrown",
+                                            command=lambda r=row, c=col: self.eventClick(r, c))
+                        cell.grid(row=row, column=col)
+                    else:
+                        cell = Chess.Button(inner, text="", width="143", height="100", background="sandybrown",
+                                            image=self.tkphoto, command=lambda r=row, c=col: self.eventClick(r, c))
 
-                    cell.grid(row=row, column=col)
+                        cell.grid(row=row, column=col)
                     clr = False
-                elif clr == False:
-                    cell = Chess.Button(inner, text=" ", width="20", height="7", background="black",
-                                        command=lambda r=row, c=col: self.eventClick(r, c))
+                elif clr is False:
+                    if rowNum > 1 and rowNum < 6:
+                        cell = Chess.Button(inner, text=" ", width="20", height="7", background="saddlebrown",
+                                            command=lambda r=row, c=col: self.eventClick(r, c))
 
-                    cell.grid(row=row, column=col)
+                        cell.grid(row=row, column=col)
+                    else:
+                        cell = Chess.Button(inner, text=" ", width="143", height="100", background="saddlebrown",
+                                            image=self.tkphoto, command=lambda r=row, c=col: self.eventClick(r, c))
+
+                        cell.grid(row=row, column=col)
+
                     clr = True
-
+            rowNum += 1
         return outer
 
-    def showBoard(self):
+    def showStartBoard(self):
         self.eventNew = self.Functiontabs
         self.eventResume = self.Functiontabs
         self.eventSave = self.Functiontabs

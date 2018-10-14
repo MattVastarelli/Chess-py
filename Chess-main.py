@@ -16,7 +16,7 @@ def main():
     test_board = board.Board()
     test_gui =  GUI.tkGui()
 
-    test_gui.showBoard()
+    test_gui.showStartBoard()
 
     test_board.fill_board()
     printHelper.print_board(test_board.get_board_state())
