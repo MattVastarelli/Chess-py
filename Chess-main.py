@@ -9,12 +9,16 @@ def main():
     from Models import board
     from Controller import game
     from Views import printHelper
+    from Views import GUI
 
 
     test_game = game.Game()
     test_board = board.Board()
-    test_board.fill_board()
+    test_gui =  GUI.tkGui()
 
+    test_gui.showBoard()
+
+    test_board.fill_board()
     printHelper.print_board(test_board.get_board_state())
 
 
