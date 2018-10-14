@@ -1,9 +1,6 @@
 import tkinter as tk
 import tkinter.messagebox as mb
-from PIL import Image, ImageTk
 from Views import guiHelper
-from Models import board
-from Controller import game
 
 
 class TkGui:
@@ -16,9 +13,6 @@ class TkGui:
         self.event_help = ''
         self.event_about = ''
         self.event_exit = ''
-        self.testphoto = Image.open('crown.png')
-        self.tkphoto = ImageTk.PhotoImage(self.testphoto)
-
         self.helper = guiHelper.GuiHelper()
 
     # This builds the menu
@@ -65,11 +59,13 @@ class TkGui:
                         cell = tk.Button(inner, text="", width="20", height="7", background="sandybrown",
                                             command=lambda r=row, c=col: self.helper.event_click(r, c))
                         cell.grid(row=row, column=col)
+                        self.helper.gui_board[row][col] = cell
                     else:
-                        cell = tk.Button(inner, text="", width="143", height="100", background="sandybrown",
-                                        image=self.tkphoto, command=lambda r=row, c=col: self.helper.event_click(r, c))
+                        cell = tk.Button(inner, text="", width="143", height="110", background="sandybrown",
+                                image=self.helper.tkphoto,command=lambda r=row, c=col: self.helper.event_click(r, c))
 
                         cell.grid(row=row, column=col)
+                        self.helper.gui_board[row][col] = cell
                     clr = False
                 elif clr is False:
                     if row_num > 1 and row_num < 6:
@@ -77,11 +73,13 @@ class TkGui:
                                             command=lambda r=row, c=col: self.helper.event_click(r, c))
 
                         cell.grid(row=row, column=col)
+                        self.helper.gui_board[row][col] = cell
                     else:
-                        cell = tk.Button(inner, text=" ", width="143", height="100", background="saddlebrown",
-                                        image=self.tkphoto, command=lambda r=row, c=col: self.helper.event_click(r, c))
+                        cell = tk.Button(inner, text=" ", width="143", height="110", background="saddlebrown",
+                                image=self.helper.tkphoto, command=lambda r=row, c=col: self.helper.event_click(r, c))
 
                         cell.grid(row=row, column=col)
+                        self.helper.gui_board[row][col] = cell
 
                     clr = True
             row_num += 1
@@ -100,6 +98,8 @@ class TkGui:
         ch_board = self.build_chess_board(self.top)
         ch_board.pack()
 
-        tk.mainloop()
-
         return None
+
+    def run(self):
+        self.show_board()
+        tk.mainloop()
