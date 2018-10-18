@@ -11,7 +11,7 @@ class Game:
         self.y_axis = 0
 
     def is_game_done(self, King):
-        # checks to see if a game is oven and who won
+        # checks to see if a game is over and who won
         if chessPiece.King.is_alive is False:
             return chessPiece.King.get_color() + ' won'
 
