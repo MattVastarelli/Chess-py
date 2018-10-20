@@ -13,7 +13,7 @@ class TkGui:
         self.event_help = ''
         self.event_about = ''
         self.event_exit = ''
-        self.helper = guiHelper.GuiHelper()
+        self.gui_objects = guiHelper.GuiObjects()
 
     # This builds the menu
     def build_menu(self, parent):
@@ -48,7 +48,7 @@ class TkGui:
         clr = True
 
         row_num = 0
-		# This for loop builds the board while also alternating black and white squares
+        # This for loop builds the board while also alternating black and white squares
         for row in range(8): 
             if row % 2 == 0:
                 clr = True
@@ -58,29 +58,32 @@ class TkGui:
                 if clr is True:
                     if row_num > 1 and row_num < 6:
                         cell = tk.Button(inner, text="", width="20", height="7", background="sandybrown",
-                                            command=lambda r=row, c=col: self.helper.event_click(r, c))
-                        cell.grid(row=row, column=col)
-                        self.helper.gui_board[row][col] = cell
-                    else:
-                        cell = tk.Button(inner, text="", width="143", height="110", background="sandybrown",
-                                image=self.helper.tkphoto,command=lambda r=row, c=col: self.helper.event_click(r, c))
+                                            command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
                         cell.grid(row=row, column=col)
-                        self.helper.gui_board[row][col] = cell
+                        self.gui_objects.gui_board[row][col] = cell
+                    else:
+                        cell = tk.Button(inner, text="", width="143", height="110", background="sandybrown",
+                            image=self.gui_objects.tkphoto,
+                                         command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+
+                        cell.grid(row=row, column=col)
+                        self.gui_objects.gui_board[row][col] = cell
                     clr = False
                 elif clr is False:
                     if row_num > 1 and row_num < 6:
                         cell = tk.Button(inner, text=" ", width="20", height="7", background="saddlebrown",
-                                            command=lambda r=row, c=col: self.helper.event_click(r, c))
+                                            command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
                         cell.grid(row=row, column=col)
-                        self.helper.gui_board[row][col] = cell
+                        self.gui_objects.gui_board[row][col] = cell
                     else:
                         cell = tk.Button(inner, text=" ", width="143", height="110", background="saddlebrown",
-                                image=self.helper.tkphoto, command=lambda r=row, c=col: self.helper.event_click(r, c))
+                            image=self.gui_objects.tkphoto,
+                                         command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
                         cell.grid(row=row, column=col)
-                        self.helper.gui_board[row][col] = cell
+                        self.gui_objects.gui_board[row][col] = cell
 
                     clr = True
             row_num += 1

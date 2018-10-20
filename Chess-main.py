@@ -3,14 +3,11 @@
 # TODO methods for taking a piece, telling if a spot is occupied, getting a piece back, and captured piece list
 # TODO need way of refreshing the gui or just one spot
 
+
 def main():
-    from Models import board
-    from Controller import game
-    from Views import printHelper
     from Views import GUI
 
     test_gui = GUI.TkGui()
-
     test_gui.run()
 
 

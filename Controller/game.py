@@ -10,10 +10,10 @@ class Game:
         self.x_axis = 0
         self.y_axis = 0
 
-    def is_game_done(self, King):
+    def is_game_done(self, piece):
         # checks to see if a game is over and who won
-        if chessPiece.King.is_alive is False:
-            return chessPiece.King.get_color() + ' won'
+        if piece.get_is_alive() is False:
+            return piece.get_color() + ' won'
 
     def find_move_value(self, start_pos, end_pos):
         # find the move distance
@@ -24,20 +24,37 @@ class Game:
 
         return move
 
-    def is_move_valid(self, move):
+    def is_move_valid(self, piece, move):
         # checks to see  if a given move sent as a tuple is valid
-        if move in chessPiece.King.get_valid_moves():
-            return True
-        elif move in chessPiece.Queen.get_valid_moves():
-            return True
-        elif move in chessPiece.Knight.get_valid_moves():
-            return True
-        elif move in chessPiece.Rook.get_valid_moves():
-            return True
-        elif move in chessPiece.Bishop.get_valid_moves():
-            return True
-        elif move in chessPiece.Pawn.get_valid_moves():
-            return True
+        if piece.get_name() is "King":
+            if move in piece.get_valid_moves():
+                return True
+            else:
+                return False
+        elif piece.get_name() is "Queen":
+            if move in piece.get_valid_moves():
+                return True
+            else:
+                return False
+        elif piece.get_name() is "Rook":
+            if move in piece.get_valid_moves():
+                return True
+            else:
+                return False
+        elif piece.get_name() is "Knight":
+            if move in piece.get_valid_moves():
+                return True
+            else:
+                return False
+        elif piece.get_name() is "Bishop":
+            if move in piece.get_valid_moves():
+                return True
+            else:
+                return False
+        elif piece.get_name() is "Pawn":
+            if move in piece.get_valid_moves():
+                return True
+            else:
+                return False
         else:
             return False
-

@@ -1,14 +1,20 @@
 from Controller import game
 from PIL import Image, ImageTk
+from Models import board
 
 
-class GuiHelper:
+class GuiObjects:
     # helper class to shorten and simplify the main gui
     def __init__(self):
-        self. game = game.Game()
+        # main controller class
+        self.game = game.Game()
+        # instantiate the board object
+        self.board = board.Board()
+        self.board.fill_board()
+
         self.click_count = 0
-        self.click_1 = tuple()
-        self.click_2 = tuple()
+        self.from_spot = tuple()
+        self.to_spot = tuple()
         self.testphoto = Image.open('crown.png')
         self.tkphoto = ImageTk.PhotoImage(self.testphoto)
         # hold the memory addresses of the buttons in a matrix
@@ -20,13 +26,23 @@ class GuiHelper:
 
         # remember the first click
         if self.click_count is 1:
-            self.click_1 = (row, col)
+            self.from_spot = (row, col)
         else:
             # check to see if two clicks have been made
-            self.click_2 = (row, col)
+            self.to_spot = (row, col)
             self.click_count = 0
+
             # call the method to find the move
-            move = self.game.find_move_value(self.click_1, self.click_2)
+            move = self.game.find_move_value(self.from_spot, self.to_spot)
+            piece = self.board.get_spot(self.from_spot[0], self.from_spot[1])
+
+            print(self.board.get_spot(self.from_spot[0], self.from_spot[1]).get_display_name(), end="")
+            print(" From: " + str(self.from_spot) + " To: " + str(self.to_spot))
+
             # call the method to check if the move is valid
-            self.gui_board[self.click_1[0]][self.click_1[1]].configure(image='', width="20", height="7", )
-            self.gui_board[row][col].configure(image=self.tkphoto, width="143", height="110")
+            if self.game.is_move_valid(piece, move) is True:
+                self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20", height="7", )
+                self.gui_board[row][col].configure(image=self.tkphoto, width="143", height="110")
+
+            self.from_spot = (0, 0)
+            self.to_spot = (0, 0)
