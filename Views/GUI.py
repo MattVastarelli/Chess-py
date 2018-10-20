@@ -2,6 +2,55 @@ import tkinter as tk
 import tkinter.messagebox as mb
 from Views import guiHelper
 
+class SplashScreen:
+    def __init__(self):
+         self.top = tk.Tk()
+         self.event_new = ''
+         self.event_resume = ''
+         self.event_help = ''
+         self.event_about = ''
+         self.event_exit = ''
+    def function_tabs(self,):
+        mb.showinfo("Test")
+    def buildSplashScreen(self, parent):
+        outer = tk.Frame(parent, border = 5, relief = 'sunken')
+        inner = tk.Frame(outer)
+        inner.pack()
+        for i in range(5):
+            if i == 0:
+               b1 =  tk.Button(inner, text = "New Game", width="20", height="7",command = self.startGame)
+               b1.pack()
+            if i == 1:
+               b2 =  tk.Button(inner, text = "Resume Game", width="20", height="7",command = self.event_resume)
+               b2.pack()
+            if i == 2:
+               b3 =  tk.Button(inner, text = "Help", width="20", height="7",command = self.event_help)
+               b3.pack()
+            if i == 3:
+               b4 =  tk.Button(inner, text = "About", width="20", height="7", command = self.event_about)
+               b4.pack()
+            if i == 4:
+               b5 =  tk.Button(inner, text = "Quit", width="20", height="7",command = self.event_exit)
+               b5.pack()
+        return outer
+    def startGame(self):
+        self.top.destroy()
+        testgui = TkGui()
+        testgui.run()
+    def showSplashScreen(self):
+        #self.event_new = self.function_tabs
+        self.event_resume = self.function_tabs
+        self.event_exit = self.function_tabs
+        self.event_help = self.function_tabs
+        self.event_about = self.function_tabs
+        splash = self.buildSplashScreen(self.top)
+        splash.pack()
+        return None
+    def run(self):
+        self.showSplashScreen()
+        tk.mainloop()
+
+
 
 class TkGui:
     # main GUI class to build the gui and launch call the controller methods
@@ -17,14 +66,12 @@ class TkGui:
 
     # This builds the menu
     def build_menu(self, parent):
-        menus = (
-            ("File", (("New Game", self.event_new),
+        menus = (("File", (("New Game", self.event_new),
                       ("Resume Game", self.event_resume),
                       ("Save Game", self.event_save),
                       ("Exit", self.event_exit))),
             ("Help", (("Help", self.event_help),
-                      ("About", self.event_about))),
-        )
+                      ("About", self.event_about))),)
 
         menubar = tk.Menu(parent)
 
@@ -36,7 +83,8 @@ class TkGui:
 
         return menubar
 
-    # This is just to represent what we plan to do later, meaningless at this point.
+    # This is just to represent what we plan to do later, meaningless at this
+    # point.
     def function_tabs(self,):
         mb.showinfo("Test", "to be developed later")
 
@@ -48,7 +96,8 @@ class TkGui:
         clr = True
 
         row_num = 0
-        # This for loop builds the board while also alternating black and white squares
+        # This for loop builds the board while also alternating sandybrown and
+        # saddlebrown squares
         for row in range(8): 
             if row % 2 == 0:
                 clr = True
@@ -93,7 +142,7 @@ class TkGui:
         self.event_new = self.function_tabs
         self.event_resume = self.function_tabs
         self.event_save = self.function_tabs
-        self.event_exit = self.top.quit
+        self.event_exit = self.function_tabs
         self.event_help = self.function_tabs
         self.event_about = self.function_tabs
 

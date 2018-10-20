@@ -6,7 +6,7 @@
 def main():
     from Views import GUI
 
-    test_gui = GUI.TkGui()
+    test_gui = GUI.SplashScreen()#TkGui()
     test_gui.run()
 
 
