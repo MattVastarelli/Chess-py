@@ -4,7 +4,10 @@ from Views import guiHelper
 
 class SplashScreen:
     def __init__(self):
-         self.top = tk.Tk()
+         self.welcome = tk.Tk()
+         self.welcome.geometry("500x700")
+         self.welcome.title("Chess") 
+         self.welcome.configure(background = 'saddlebrown')
          self.event_new = ''
          self.event_resume = ''
          self.event_help = ''
@@ -12,42 +15,45 @@ class SplashScreen:
          self.event_exit = ''
     def function_tabs(self,):
         mb.showinfo("Test")
+    def AboutButtonAction(self,):
+        mb.showinfo("About", "Authors: Matthew and Evan")
     def buildSplashScreen(self, parent):
-        outer = tk.Frame(parent, border = 5, relief = 'sunken')
-        inner = tk.Frame(outer)
+        outer = tk.Frame(parent, border = 5, background = "sandybrown", relief = 'sunken')
+        inner = tk.Frame(outer, background = "saddlebrown")
         inner.pack()
         for i in range(5):
             if i == 0:
-               b1 =  tk.Button(inner, text = "New Game", width="20", height="7",command = self.startGame)
+               b1 =  tk.Button(inner, text = "New Game", width="35", height="7",command = self.startGame)
                b1.pack()
             if i == 1:
-               b2 =  tk.Button(inner, text = "Resume Game", width="20", height="7",command = self.event_resume)
+               b2 =  tk.Button(inner, text = "Resume Game", width="35", height="7",command = self.event_resume)
                b2.pack()
             if i == 2:
-               b3 =  tk.Button(inner, text = "Help", width="20", height="7",command = self.event_help)
+               b3 =  tk.Button(inner, text = "Help", width="35", height="7",command = self.event_help)
                b3.pack()
             if i == 3:
-               b4 =  tk.Button(inner, text = "About", width="20", height="7", command = self.event_about)
+               b4 =  tk.Button(inner, text = "About", width="35", height="7", command = self.event_about)
                b4.pack()
             if i == 4:
-               b5 =  tk.Button(inner, text = "Quit", width="20", height="7",command = self.event_exit)
+               b5 =  tk.Button(inner, text = "Quit", width="35", height="7",command = self.event_exit)
                b5.pack()
+        
         return outer
     def startGame(self):
-        self.top.destroy()
+        self.welcome.destroy()
         testgui = TkGui()
         testgui.run()
     def showSplashScreen(self):
-        #self.event_new = self.function_tabs
         self.event_resume = self.function_tabs
         self.event_exit = self.function_tabs
         self.event_help = self.function_tabs
-        self.event_about = self.function_tabs
-        splash = self.buildSplashScreen(self.top)
+        self.event_about = self.AboutButtonAction        
+        splash = self.buildSplashScreen(self.welcome)        
         splash.pack()
         return None
     def run(self):
         self.showSplashScreen()
+       
         tk.mainloop()
 
 
