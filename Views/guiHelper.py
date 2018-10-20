@@ -9,8 +9,8 @@ class GuiObjects:
         # main controller class
         self.game = game.Game()
         # instantiate the board object
-        self.board = board.Board()
-        self.board.fill_board()
+        #self.board = board.Board()
+        #self.board.fill_board()
 
         self.click_count = 0
         self.from_spot = tuple()
@@ -34,15 +34,16 @@ class GuiObjects:
 
             # call the method to find the move
             move = self.game.find_move_value(self.from_spot, self.to_spot)
-            piece = self.board.get_spot(self.from_spot[0], self.from_spot[1])
+            #piece = self.board.get_spot(self.from_spot[0], self.from_spot[1])
 
-            print(self.board.get_spot(self.from_spot[0], self.from_spot[1]).get_display_name(), end="")
-            print(" From: " + str(self.from_spot) + " To: " + str(self.to_spot))
+            #print(self.board.get_spot(self.from_spot[0], self.from_spot[1]).get_display_name(), end="")
+            #print(" From: " + str(self.from_spot) + " To: " + str(self.to_spot))
 
             # call the method to check if the move is valid
-            if self.game.is_move_valid(piece, move) is True:
+            if self.game.is_move_valid(self.from_spot, move) is True:
                 self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20", height="7", )
                 self.gui_board[row][col].configure(image=self.tkphoto, width="143", height="110")
 
+            # reset the spot locations
             self.from_spot = (0, 0)
             self.to_spot = (0, 0)
