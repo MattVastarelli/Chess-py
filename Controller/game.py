@@ -38,42 +38,8 @@ class Game:
 
         if piece is 0:
             return False
-        elif piece.get_name() is "King":
-            if move in piece.get_valid_moves():
-                self.update_board(to_spot, piece)
-                self.update_board(from_spot, piece)
-                return True
-            else:
-                return False
-        elif piece.get_name() is "Queen":
-            if move in piece.get_valid_moves():
-                self.update_board(to_spot, piece)
-                self.update_board(from_spot, piece)
-                return True
-            else:
-                return False
-        elif piece.get_name() is "Rook":
-            if move in piece.get_valid_moves():
-                self.update_board(to_spot, piece)
-                self.update_board(from_spot, piece)
-                return True
-            else:
-                return False
-        elif piece.get_name() is "Knight":
-            if move in piece.get_valid_moves():
-                self.update_board(to_spot, piece)
-                self.update_board(from_spot, piece)
-                return True
-            else:
-                return False
-        elif piece.get_name() is "Bishop":
-            if move in piece.get_valid_moves():
-                self.update_board(to_spot, piece)
-                self.update_board(from_spot, piece)
-                return True
-            else:
-                return False
         elif piece.get_name() is "Pawn":
+            # handle the pawn case
             if piece.is_first_move():
                 if move in piece.get_valid_moves() or [(2, 0)]:
                     self.update_board(to_spot, piece)
@@ -89,5 +55,10 @@ class Game:
                     return True
                 else:
                     return False
+        elif move in piece.get_valid_moves():
+            self.update_board(to_spot, piece)
+            self.update_board(from_spot, piece)
+            return True
         else:
             return False
+
