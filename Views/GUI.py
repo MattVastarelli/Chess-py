@@ -1,23 +1,29 @@
 import tkinter as tk
 import tkinter.messagebox as mb
 from Views import guiHelper
+from PIL import Image, ImageTk
 
 class SplashScreen:
     def __init__(self):
          self.welcome = tk.Tk()
          self.welcome.geometry("500x700")
-         self.welcome.title("Chess") 
-         self.welcome.configure(background = 'saddlebrown')
+         self.welcome.title("Chess")
+         self.bgphoto = Image.open('chessbgc5.jpg')
+         self.tkphoto1 = ImageTk.PhotoImage(self.bgphoto)
+         self.welcome.resizable(0,0)
          self.event_new = ''
          self.event_resume = ''
          self.event_help = ''
          self.event_about = ''
          self.event_exit = ''
+         
     def function_tabs(self,):
         mb.showinfo("Test")
     def AboutButtonAction(self,):
         mb.showinfo("About", "Authors: Matthew and Evan")
     def buildSplashScreen(self, parent):
+        backpic = tk.Label(self.welcome, image=self.tkphoto1)
+        backpic.place(x=0,y=0, relwidth = 1, relheight =1)
         outer = tk.Frame(parent, border = 5, background = "sandybrown", relief = 'sunken')
         inner = tk.Frame(outer, background = "saddlebrown")
         inner.pack()
