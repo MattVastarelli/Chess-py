@@ -16,7 +16,11 @@ class Game:
     def is_game_done(self, piece):
         # checks to see if a game is over and who won
         if piece.get_is_alive() is False:
-            return piece.get_color() + ' won'
+            return True
+
+    def filp_trun(self):
+        # change turn after move
+        print()
 
     def find_move_value(self, start_pos, end_pos):
         # find the move distance
@@ -30,10 +34,19 @@ class Game:
         # update the board with the move
         self.board.set_spot(spot[0], spot[1], piece)
 
+    def is_spot_full(self, x, y):
+        # check if there is a piece on a spot
+        print(x)
+
     def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid
+        return_bool = False
 
         piece = self.board.get_spot(from_spot[0], from_spot[1])
+        # TODO check for colors turn
+        # TODO flip turn
+        # TODO remove piece and place in list need to save from garbage collector
+        # TODO method to get a piece back
         print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
         if piece is 0:
             return False
