@@ -24,7 +24,6 @@ class Game:
         col = end_pos[1] - start_pos[1]
 
         move = (row, col)
-
         return move
 
     def update_board(self, spot, piece):
@@ -35,29 +34,46 @@ class Game:
         # checks to see  if a given move sent as a tuple is valid
 
         piece = self.board.get_spot(from_spot[0], from_spot[1])
-
+        print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
         if piece is 0:
             return False
         elif piece.get_name() is "Pawn":
             # handle the pawn case
             if piece.is_first_move():
-                if move in piece.get_valid_moves() or [(2, 0)]:
-                    self.update_board(to_spot, piece)
-                    self.update_board(from_spot, piece)
-                    piece.set_first_move(False)
-                    return True
+                if piece.get_color() is "White":
+                    if move in [(-2, 0), (-1, 0)]:
+                        self.update_board(to_spot, piece)
+                        self.update_board(from_spot, 0)
+                        piece.set_first_move(False)
+                        return True
+                    else:
+                        return False
                 else:
-                    return False
+                    if move in piece.get_valid_moves() or [(2, 0)]:
+                        self.update_board(to_spot, piece)
+                        self.update_board(from_spot, 0)
+                        piece.set_first_move(False)
+                        return True
+                    else:
+                        return False
             else:
-                if move in piece.get_valid_moves():
-                    self.update_board(to_spot, piece)
-                    self.update_board(from_spot, piece)
-                    return True
+                if piece.get_color() is "White":
+                    if move == (-1, 0):
+                        self.update_board(to_spot, piece)
+                        self.update_board(from_spot, 0)
+                        return True
+                    else:
+                        return False
                 else:
-                    return False
+                    if move in piece.get_valid_moves():
+                        self.update_board(to_spot, piece)
+                        self.update_board(from_spot, 0)
+                        return True
+                    else:
+                        return False
         elif move in piece.get_valid_moves():
             self.update_board(to_spot, piece)
-            self.update_board(from_spot, piece)
+            self.update_board(from_spot, 0)
             return True
         else:
             return False
