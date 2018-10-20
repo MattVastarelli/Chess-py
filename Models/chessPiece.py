@@ -12,6 +12,7 @@ class ChessPiece:
         self.move_through_piece = False
         # can the piece move to a given spot if its path
         # is obstructed by another piece
+        self.first_move = True
 
     # various getters
     def get_name(self):
@@ -37,6 +38,13 @@ class ChessPiece:
         # for knight
         return self.move_through_piece
 
+    def is_first_move(self):
+        # check if it is the first move
+        if self.first_move is True:
+            return True
+        else:
+            return False
+
     # various setters
     def promote(self):
         # for pawn
@@ -44,6 +52,9 @@ class ChessPiece:
 
     def remove_piece(self):
         self.is_alive = False
+
+    def set_first_move(self, t_f):
+        self.first_move = t_f
 
 
 # the inherited piece classes

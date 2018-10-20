@@ -27,42 +27,67 @@ class Game:
 
         return move
 
-    def is_move_valid(self, spot, move):
+    def update_board(self, spot, piece):
+        # update the board with the move
+        self.board.set_spot(spot[0], spot[1], piece)
+
+    def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid
 
-        piece = self.board.get_spot(spot[0], spot[1])
+        piece = self.board.get_spot(from_spot[0], from_spot[1])
 
         if piece is 0:
             return False
         elif piece.get_name() is "King":
             if move in piece.get_valid_moves():
+                self.update_board(to_spot, piece)
+                self.update_board(from_spot, piece)
                 return True
             else:
                 return False
         elif piece.get_name() is "Queen":
             if move in piece.get_valid_moves():
+                self.update_board(to_spot, piece)
+                self.update_board(from_spot, piece)
                 return True
             else:
                 return False
         elif piece.get_name() is "Rook":
             if move in piece.get_valid_moves():
+                self.update_board(to_spot, piece)
+                self.update_board(from_spot, piece)
                 return True
             else:
                 return False
         elif piece.get_name() is "Knight":
             if move in piece.get_valid_moves():
+                self.update_board(to_spot, piece)
+                self.update_board(from_spot, piece)
                 return True
             else:
                 return False
         elif piece.get_name() is "Bishop":
             if move in piece.get_valid_moves():
+                self.update_board(to_spot, piece)
+                self.update_board(from_spot, piece)
                 return True
             else:
                 return False
         elif piece.get_name() is "Pawn":
-            if move in piece.get_valid_moves():
-                return True
+            if piece.is_first_move():
+                if move in piece.get_valid_moves() or [(2, 0)]:
+                    self.update_board(to_spot, piece)
+                    self.update_board(from_spot, piece)
+                    piece.set_first_move(False)
+                    return True
+                else:
+                    return False
             else:
-                return False
+                if move in piece.get_valid_moves():
+                    self.update_board(to_spot, piece)
+                    self.update_board(from_spot, piece)
+                    return True
+                else:
+                    return False
         else:
             return False

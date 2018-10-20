@@ -99,3 +99,6 @@ class Board:
     def get_spot(self, x, y):
         # return the piece at the given spot
         return self.game_board[x][y]
+
+    def set_spot(self, x, y, piece):
+        self.game_board[x][y] = piece
