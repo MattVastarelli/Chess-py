@@ -1,6 +1,5 @@
 from Controller import game
 from PIL import Image, ImageTk
-from Models import board
 
 
 class GuiObjects:

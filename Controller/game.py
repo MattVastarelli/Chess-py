@@ -18,6 +18,12 @@ class Game:
         if piece.get_is_alive() is False:
             return True
 
+    def get_turn_color(self):
+        if self.white_turn is True:
+            return "White"
+        else:
+            return "Black"
+
     def filp_trun(self):
         # change turn after move
         print()
@@ -40,8 +46,6 @@ class Game:
 
     def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid
-        return_bool = False
-
         piece = self.board.get_spot(from_spot[0], from_spot[1])
         # TODO check for colors turn
         # TODO flip turn
