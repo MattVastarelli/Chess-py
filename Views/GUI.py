@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.messagebox as mb
 from Views import guiHelper
 from PIL import Image, ImageTk
+from Views import saveGamehelper
 
 class SplashScreen:
     def __init__(self):
@@ -20,7 +21,7 @@ class SplashScreen:
     def function_tabs(self,):
         mb.showinfo("Test")
     def AboutButtonAction(self,):
-        mb.showinfo("About", "Authors: Matthew and Evan")
+        mb.showinfo("About", "UNH Script Progrmmaing/Python(CSCI-6651)\nProfessor: Dr. Frank Breitinger\nAuthors: Matthew and Evan")
     def buildSplashScreen(self, parent):
         backpic = tk.Label(self.welcome, image=self.tkphoto1)
         backpic.place(x=0,y=0, relwidth = 1, relheight =1)
@@ -73,11 +74,14 @@ class TkGui:
         self.event_about = ''
         self.event_exit = ''
         self.gui_objects = guiHelper.GuiObjects()
+    def callSaveGameHelper(self):
+        sg = saveGamehelper.saveToFile()
+        sg.runSave()
 
     # This builds the menu
     def build_menu(self, parent):
         menus = (("File", (("New Game", self.event_new),
-                      ("Save Game", self.event_save),
+                      ("Save Game", self.callSaveGameHelper),
                       ("Exit", self.event_exit))),
             ("Help", (("Help", self.event_help),
                       ("About", self.event_about))),)
@@ -96,7 +100,8 @@ class TkGui:
     # point.
     def function_tabs(self,):
         mb.showinfo("Test", "to be developed later")
-
+    def AboutButtonAction(self,):
+        mb.showinfo("About", "UNH Script Progrmmaing/Python(CSCI-6651)\nProfessor: Dr. Frank Breitinger\nAuthors: Matthew and Evan")
     # build the chess board
     def build_chess_board(self, parent):
         outer = tk.Frame(parent, border=5, relief='sunken')
@@ -149,10 +154,10 @@ class TkGui:
 
     def show_board(self):
         self.event_new = self.function_tabs
-        self.event_save = self.function_tabs
+        #self.event_save = self.saveGamehelper.run()
         self.event_exit = self.top.destroy
         self.event_help = self.function_tabs
-        self.event_about = self.function_tabs
+        self.event_about = self.AboutButtonAction
 
         menubar = self.build_menu(self.top)
         self.top["menu"] = menubar
