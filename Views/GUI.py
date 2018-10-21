@@ -41,7 +41,7 @@ class SplashScreen:
                b4 =  tk.Button(inner, text = "About", width="35", height="7", command = self.event_about)
                b4.pack()
             if i == 4:
-               b5 =  tk.Button(inner, text = "Quit", width="35", height="7",command = self.event_exit)
+               b5 =  tk.Button(inner, text = "Quit", width="35", height="7",command = self.welcome.destroy)
                b5.pack()
         
         return outer
@@ -51,7 +51,6 @@ class SplashScreen:
         testgui.run()
     def showSplashScreen(self):
         self.event_resume = self.function_tabs
-        self.event_exit = self.function_tabs
         self.event_help = self.function_tabs
         self.event_about = self.AboutButtonAction        
         splash = self.buildSplashScreen(self.welcome)        
@@ -69,7 +68,6 @@ class TkGui:
     def __init__(self):
         self.top = tk.Tk()
         self.event_new = ''
-        self.event_resume = ''
         self.event_save = ''
         self.event_help = ''
         self.event_about = ''
@@ -79,7 +77,6 @@ class TkGui:
     # This builds the menu
     def build_menu(self, parent):
         menus = (("File", (("New Game", self.event_new),
-                      ("Resume Game", self.event_resume),
                       ("Save Game", self.event_save),
                       ("Exit", self.event_exit))),
             ("Help", (("Help", self.event_help),
@@ -152,9 +149,8 @@ class TkGui:
 
     def show_board(self):
         self.event_new = self.function_tabs
-        self.event_resume = self.function_tabs
         self.event_save = self.function_tabs
-        self.event_exit = self.function_tabs
+        self.event_exit = self.top.destroy
         self.event_help = self.function_tabs
         self.event_about = self.function_tabs
 
