@@ -6,8 +6,9 @@
 def main():
     from Views import GUI
 
-    test_gui = GUI.SplashScreen()
-    test_gui.run()
+    # TkGui()
+    gui = GUI.SplashScreen()
+    gui.run()
 
 
 if __name__ == '__main__':
