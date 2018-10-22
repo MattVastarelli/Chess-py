@@ -32,8 +32,7 @@ class GuiBoard:
 
         return menubar
 
-    # This is just to represent what we plan to do later, meaningless at this
-    # point.
+    # This is just to represent what we plan to do later, meaningless at this point.
     def function_tabs(self,):
         mb.showinfo("Test", "to be developed later")
 
@@ -45,8 +44,7 @@ class GuiBoard:
         clr = True
 
         row_num = 0
-        # This for loop builds the board while also alternating sandybrown and
-        # saddlebrown squares
+        # This for loop builds the board while also alternating sandybrown and saddlebrown squares
         for row in range(8):
             if row % 2 == 0:
                 clr = True

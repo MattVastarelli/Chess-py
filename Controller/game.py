@@ -1,4 +1,3 @@
-from Models import chessPiece
 from Models import board
 
 
@@ -23,6 +22,11 @@ class Game:
             return "White"
         else:
             return "Black"
+
+    def get_piece_color(self, spot):
+        # get the color of a piece on a given spot
+        piece = self.board.get_spot(spot[0], spot[1])
+        return piece.get_color()
 
     def filp_trun(self):
         # change turn after move
