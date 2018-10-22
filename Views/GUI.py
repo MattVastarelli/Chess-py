@@ -3,6 +3,7 @@ import tkinter.messagebox as mb
 from PIL import Image, ImageTk
 from Views import guiBoard
 
+
 class SplashScreen:
     def __init__(self):
         self.welcome = tk.Tk()

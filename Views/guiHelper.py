@@ -38,11 +38,35 @@ class GuiObjects:
                     if self.game.is_spot_occupied(self.to_spot) is False:
                         # call the method to check if the move is valid
                         if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
+                            # update the board
+                            self.game.update_board(self.to_spot, self.game.get_piece(self.from_spot))
+                            self.game.update_board(self.from_spot, 0)
+
+                            # update the GUI
                             self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20",
                                                                                            height="7")
                             self.gui_board[row][col].configure(image=self.tkphoto, width="143", height="110")
                             # flip the turn so the other color could move
                             self.game.filp_trun()
+                    else:
+                        # check if the color of the selected piece does not match the spot
+                        if self.game.get_piece_color(self.to_spot) is not self.game.get_piece_color(self.from_spot):
+                            # call the method to check if the move is valid
+                            if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
+                                # take the piece
+                                self.game.take_piece(self.to_spot)
+
+                                # update the board
+                                self.game.update_board(self.to_spot, self.game.get_piece(self.from_spot))
+                                self.game.update_board(self.from_spot, 0)
+
+                                # update the GUI
+                                self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20",
+                                                                                               height="7")
+                                self.gui_board[row][col].configure(image=self.tkphoto, width="143", height="110")
+
+                                # flip the turn so the other color could move
+                                self.game.filp_trun()
 
             # reset the spot locations
             self.from_spot = (0, 0)

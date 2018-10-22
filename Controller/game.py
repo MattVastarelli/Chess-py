@@ -6,6 +6,8 @@ class Game:
     def __init__(self):
         self.white_turn = True
         self.black_turn = False
+        self.captured_white_pieces = list()
+        self.captured_black_pieces = list()
         # instantiate the board object
         self.board = board.Board()
         self.board.fill_board()
@@ -21,10 +23,30 @@ class Game:
         else:
             return "Black"
 
+    def update_board(self, spot, piece):
+        # update the board with the move
+        self.board.set_spot(spot[0], spot[1], piece)
+
     def get_piece_color(self, spot):
         # get the color of a piece on a given spot
         piece = self.board.get_spot(spot[0], spot[1])
         return piece.get_color()
+
+    def get_piece(self, spot):
+        # return the piece at a given spot
+        return self.board.get_spot(spot[0], spot[1])
+
+    def take_piece(self, spot):
+        # capture a piece and add it to the correct list
+        piece = self.board.get_spot(spot[0], spot[1])
+
+        # set the is alive flag to false
+        piece.remove_piece()
+
+        if piece.get_color() is "Black":
+            self.captured_black_pieces.append(piece)
+        else:
+            self.captured_white_pieces.append(piece)
 
     def spot_is_zero(self, spot):
         spot = self.board.get_spot(spot[0], spot[1])
@@ -46,10 +68,6 @@ class Game:
         move = (row, col)
         return move
 
-    def update_board(self, spot, piece):
-        # update the board with the move
-        self.board.set_spot(spot[0], spot[1], piece)
-
     def is_spot_occupied(self, loc):
         # check if there is a piece on a spot
         spot = self.board.get_spot(loc[0], loc[1])
@@ -62,7 +80,6 @@ class Game:
     def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid
         piece = self.board.get_spot(from_spot[0], from_spot[1])
-        # TODO remove piece and place in list need to save from garbage collector
         # TODO method to get a piece back
         print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
         if piece is 0:
@@ -72,16 +89,12 @@ class Game:
             if piece.is_first_move():
                 if piece.get_color() is "White":
                     if move in [(-2, 0), (-1, 0)]:
-                        self.update_board(to_spot, piece)
-                        self.update_board(from_spot, 0)
                         piece.set_first_move(False)
                         return True
                     else:
                         return False
                 else:
                     if move in piece.get_valid_moves() or [(2, 0)]:
-                        self.update_board(to_spot, piece)
-                        self.update_board(from_spot, 0)
                         piece.set_first_move(False)
                         return True
                     else:
@@ -89,21 +102,15 @@ class Game:
             else:
                 if piece.get_color() is "White":
                     if move == (-1, 0):
-                        self.update_board(to_spot, piece)
-                        self.update_board(from_spot, 0)
                         return True
                     else:
                         return False
                 else:
                     if move in piece.get_valid_moves():
-                        self.update_board(to_spot, piece)
-                        self.update_board(from_spot, 0)
                         return True
                     else:
                         return False
         elif move in piece.get_valid_moves():
-            self.update_board(to_spot, piece)
-            self.update_board(from_spot, 0)
             return True
         else:
             return False
