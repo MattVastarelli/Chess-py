@@ -6,8 +6,6 @@ class Game:
     def __init__(self):
         self.white_turn = True
         self.black_turn = False
-        self.x_axis = 0
-        self.y_axis = 0
         # instantiate the board object
         self.board = board.Board()
         self.board.fill_board()
@@ -28,6 +26,13 @@ class Game:
         piece = self.board.get_spot(spot[0], spot[1])
         return piece.get_color()
 
+    def spot_is_zero(self, spot):
+        spot = self.board.get_spot(spot[0], spot[1])
+        if spot is 0:
+            return True
+        else:
+            return False
+
     def filp_trun(self):
         # change turn after move
         self.white_turn = not self.white_turn
@@ -45,9 +50,14 @@ class Game:
         # update the board with the move
         self.board.set_spot(spot[0], spot[1], piece)
 
-    def is_spot_full(self, x, y):
+    def is_spot_occupied(self, loc):
         # check if there is a piece on a spot
-        print(x)
+        spot = self.board.get_spot(loc[0], loc[1])
+
+        if spot is 0:
+            return False
+        else:
+            return True
 
     def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid
