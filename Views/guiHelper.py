@@ -37,6 +37,9 @@ class GuiObjects:
                     self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20", height="7", )
                     self.gui_board[row][col].configure(image=self.tkphoto, width="143", height="110")
 
+                    # flip the turn so the other color could move
+                    self.game.filp_trun()
+
             # reset the spot locations
             self.from_spot = (0, 0)
             self.to_spot = (0, 0)

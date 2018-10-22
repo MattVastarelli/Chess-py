@@ -30,7 +30,8 @@ class Game:
 
     def filp_trun(self):
         # change turn after move
-        print()
+        self.white_turn = not self.white_turn
+        self.black_turn = not self.black_turn
 
     def find_move_value(self, start_pos, end_pos):
         # find the move distance
@@ -51,8 +52,6 @@ class Game:
     def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid
         piece = self.board.get_spot(from_spot[0], from_spot[1])
-        # TODO check for colors turn
-        # TODO flip turn
         # TODO remove piece and place in list need to save from garbage collector
         # TODO method to get a piece back
         print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
