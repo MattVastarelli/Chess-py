@@ -43,6 +43,19 @@ class Game:
         piece = self.board.get_spot(spot[0], spot[1])
         return piece.get_color()
 
+    def can_be_promoted(self, start, move_spot):
+        piece = self.get_piece(start)
+
+        if piece.get_name() is "Pawn":
+            # if in last row
+            if move_spot[0] is 7 or move_spot[0] is 0:
+                print("promoted")
+                return True
+            else:
+                return False
+        else:
+            return False
+
     def take_piece(self, spot):
         # capture a piece and add it to the correct list
         piece = self.board.get_spot(spot[0], spot[1])
@@ -105,7 +118,6 @@ class Game:
     def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid
         piece = self.board.get_spot(from_spot[0], from_spot[1])
-        # TODO method to get a piece back
         print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
         if piece is 0:
             return False

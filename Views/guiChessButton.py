@@ -38,6 +38,10 @@ class GuiObjects:
                     if self.game.is_spot_occupied(self.to_spot) is False:
                         # call the method to check if the move is valid
                         if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
+
+                            if self.game.can_be_promoted(self.from_spot, self.to_spot):
+                                print()
+
                             # update the board
                             self.game.update_board(self.to_spot, self.game.get_piece(self.from_spot))
                             self.game.update_board(self.from_spot, 0)
@@ -57,6 +61,9 @@ class GuiObjects:
                                 if self.game.pawn_capture(self.from_spot, self.to_spot) is True:
                                     # take the piece
                                     self.game.take_piece(self.to_spot)
+
+                                    if self.game.can_be_promoted(self.from_spot, self.to_spot):
+                                        print()
 
                                     # check if the game is over
                                     if self.game.is_game_done(self.to_spot) is True:
@@ -78,6 +85,9 @@ class GuiObjects:
                                 if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
                                     # take the piece
                                     self.game.take_piece(self.to_spot)
+
+                                    if self.game.can_be_promoted(self.from_spot, self.to_spot):
+                                        print()
 
                                     # check if the game is over
                                     if self.game.is_game_done(self.to_spot) is True:
