@@ -9,9 +9,6 @@ class ChessPiece:
         # valid moves are represented as a list of tuples were
         # the first item is the X axis and second the Y axis
         self.is_promoted = False  # for pawn
-        self.move_through_piece = False
-        # can the piece move to a given spot if its path
-        # is obstructed by another piece
         self.first_move = True
 
     # various getters

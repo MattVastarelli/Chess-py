@@ -1,6 +1,4 @@
 # TODO have to handle castling
-# TODO stop pieces that cant move through others from doing so
-# TODO method for getting a piece back
 
 
 def main():

@@ -100,6 +100,58 @@ class Game:
     def get_piece_type(self, spot):
         return self.board.get_spot(spot[0], spot[1]).get_name()
 
+    def get_move_path(self, from_spot, to_spot):
+        # for each spot from start to end
+        spots_to_check = list()
+        # get mutable versions of the spots
+        from_spot_0 = from_spot[0]
+        from_spot_1 = from_spot[1]
+        to_spot_0 = to_spot[0]
+        to_spot_1 = to_spot[1]
+
+        while True:
+            spot = [0, 0]
+            if from_spot_0 is to_spot_0 and from_spot_1 is to_spot_1:
+                break
+
+            if from_spot_0 >= to_spot_0:
+                if from_spot_0 is not to_spot_0:
+                    spot[0] = from_spot_0 - 1
+                    from_spot_0 = from_spot_0 - 1
+
+            if from_spot_0 <= to_spot_0:
+                if from_spot_0 is not to_spot_0:
+                    spot[0] = from_spot_0 + 1
+                    from_spot_0 = from_spot_0 + 1
+
+            if from_spot_1 >= to_spot_1:
+                if from_spot_1 is not to_spot_1:
+                    spot[1] = from_spot_1 - 1
+                    from_spot_1 = from_spot_1 - 1
+
+            if from_spot_1 <= to_spot_1:
+                if from_spot_1 is not to_spot_1:
+                    spot[1] = from_spot_1 + 1
+                    from_spot_1 = from_spot_1 + 1
+
+            spots_to_check.append(spot)
+
+        del spots_to_check[-1]
+        return spots_to_check
+
+    def check_valid_move_path(self, from_spot, to_spot):
+        # check if the path is blocked by a piece
+        if self.get_piece_type(from_spot) is "Knight":
+            return True
+        else:
+            move_path = self.get_move_path(from_spot, to_spot)
+            print(move_path)
+            for spot in move_path:
+                if self.is_spot_occupied(spot) is True:
+                    return False
+
+            return True
+
     def pawn_capture(self, from_spot, to_spot):
         piece = self.board.get_spot(from_spot[0], from_spot[1])
         print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
