@@ -15,6 +15,10 @@ class GuiObjects:
         # hold the memory addresses of the buttons in a matrix
         self.gui_board = [[0 for x in range(8)] for y in range(8)]
 
+    def update(self, to_spot, from_spot):
+        self.game.update_board(to_spot, self.game.get_piece(from_spot))
+        self.game.update_board(from_spot, 0)
+
     # event listener to control the visual movement of a piece
     def event_click(self, row, col):
         self.click_count += 1
@@ -43,9 +47,7 @@ class GuiObjects:
                                 print()
 
                             # update the board
-                            self.game.update_board(self.to_spot, self.game.get_piece(self.from_spot))
-                            self.game.update_board(self.from_spot, 0)
-
+                            self.update(self.to_spot, self.from_spot)
                             # update the GUI
                             self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20",
                                                                                            height="7")
@@ -70,9 +72,7 @@ class GuiObjects:
                                         print(self.game.get_piece_color(self.from_spot) + " Won")
 
                                     # update the board
-                                    self.game.update_board(self.to_spot, self.game.get_piece(self.from_spot))
-                                    self.game.update_board(self.from_spot, 0)
-
+                                    self.update(self.to_spot, self.from_spot)
                                     # update the GUI
                                     self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20",
                                                                                                    height="7")
@@ -94,9 +94,7 @@ class GuiObjects:
                                         print(self.game.get_piece_color(self.from_spot) + " Won")
 
                                     # update the board
-                                    self.game.update_board(self.to_spot, self.game.get_piece(self.from_spot))
-                                    self.game.update_board(self.from_spot, 0)
-
+                                    self.update(self.to_spot, self.from_spot)
                                     # update the GUI
                                     self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20",
                                                                                                    height="7")
