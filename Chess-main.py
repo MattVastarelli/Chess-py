@@ -1,6 +1,6 @@
 # TODO have to handle castling
 # TODO stop pieces that cant move through others from doing so
-# TODO methods for taking a piece, telling if a spot is occupied, getting a piece back, and captured piece list
+# TODO method for getting a piece back
 
 
 def main():

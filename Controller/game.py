@@ -77,6 +77,24 @@ class Game:
         else:
             return True
 
+    def get_piece_type(self, spot):
+        return self.board.get_spot(spot[0], spot[1]).get_name()
+
+    def pawn_capture(self, from_spot, to_spot):
+        piece = self.board.get_spot(from_spot[0], from_spot[1])
+        print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
+        # checks if a pawn can capture a piece
+        if self.get_piece_color(from_spot) is "White":
+            if self.find_move_value(from_spot, to_spot) in [(-1, 1), (1, -1)]:
+                return True
+            else:
+                return False
+        else:
+            if self.find_move_value(from_spot, to_spot) in [(1, 1), (1, -1)]:
+                return True
+            else:
+                return False
+
     def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid
         piece = self.board.get_spot(from_spot[0], from_spot[1])
