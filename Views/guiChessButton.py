@@ -46,6 +46,7 @@ class GuiObjects:
                             self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20",
                                                                                            height="7")
                             self.gui_board[row][col].configure(image=self.tkphoto, width="143", height="110")
+
                             # flip the turn so the other color could move
                             self.game.filp_trun()
                     else:
@@ -56,6 +57,10 @@ class GuiObjects:
                                 if self.game.pawn_capture(self.from_spot, self.to_spot) is True:
                                     # take the piece
                                     self.game.take_piece(self.to_spot)
+
+                                    # check if the game is over
+                                    if self.game.is_game_done(self.to_spot) is True:
+                                        print(self.game.get_piece_color(self.from_spot) + " Won")
 
                                     # update the board
                                     self.game.update_board(self.to_spot, self.game.get_piece(self.from_spot))
@@ -73,6 +78,10 @@ class GuiObjects:
                                 if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
                                     # take the piece
                                     self.game.take_piece(self.to_spot)
+
+                                    # check if the game is over
+                                    if self.game.is_game_done(self.to_spot) is True:
+                                        print(self.game.get_piece_color(self.from_spot) + " Won")
 
                                     # update the board
                                     self.game.update_board(self.to_spot, self.game.get_piece(self.from_spot))

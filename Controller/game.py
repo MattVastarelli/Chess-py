@@ -12,10 +12,21 @@ class Game:
         self.board = board.Board()
         self.board.fill_board()
 
-    def is_game_done(self, piece):
+    def get_piece(self, spot):
+        # return the piece at a given spot
+        return self.board.get_spot(spot[0], spot[1])
+
+    def is_game_done(self, spot):
         # checks to see if a game is over and who won
-        if piece.get_is_alive() is False:
-            return True
+        if self.get_piece_type(spot) is "King":
+            piece = self.get_piece(spot)
+            if piece.get_is_alive() is False:
+                # if the piece captured is a king
+                return True
+            else:
+                return False
+        else:
+            return False
 
     def get_turn_color(self):
         if self.white_turn is True:
@@ -31,10 +42,6 @@ class Game:
         # get the color of a piece on a given spot
         piece = self.board.get_spot(spot[0], spot[1])
         return piece.get_color()
-
-    def get_piece(self, spot):
-        # return the piece at a given spot
-        return self.board.get_spot(spot[0], spot[1])
 
     def take_piece(self, spot):
         # capture a piece and add it to the correct list
@@ -85,7 +92,7 @@ class Game:
         print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
         # checks if a pawn can capture a piece
         if self.get_piece_color(from_spot) is "White":
-            if self.find_move_value(from_spot, to_spot) in [(-1, 1), (1, -1)]:
+            if self.find_move_value(from_spot, to_spot) in [(-1, 1), (-1, -1)]:
                 return True
             else:
                 return False
