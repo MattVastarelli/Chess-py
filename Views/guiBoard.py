@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox as mb
 from Views import guiChessButton
+from Views import guiIcons
 
 
 class GuiBoard:
@@ -12,6 +13,7 @@ class GuiBoard:
         self.event_help = ''
         self.event_about = ''
         self.event_exit = ''
+        self.icons = guiIcons.GuiIcons()
         self.gui_objects = guiChessButton.GuiObjects()
 
     # This builds the menu
