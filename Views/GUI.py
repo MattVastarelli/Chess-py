@@ -48,7 +48,7 @@ class TkGui:
         clr = True
 
         row_num = 0
-		# This for loop builds the board while also alternating black and white squares
+        # This for loop builds the board while also alternating black and white squares
         for row in range(8): 
             if row % 2 == 0:
                 clr = True
