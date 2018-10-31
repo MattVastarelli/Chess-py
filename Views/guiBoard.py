@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.messagebox as mb
 from Views import guiChessButton
 from Views import guiIcons
+from collections import deque
 
 
 class GuiBoard:
@@ -14,6 +15,8 @@ class GuiBoard:
         self.event_about = ''
         self.event_exit = ''
         self.icons = guiIcons.GuiIcons()
+        self.white_order = self.icons.white_order()
+        self.black_order = self.icons.black_order()
         self.gui_objects = guiChessButton.GuiObjects()
 
     # This builds the menu
@@ -61,12 +64,22 @@ class GuiBoard:
                         cell.grid(row=row, column=col)
                         self.gui_objects.gui_board[row][col] = cell
                     else:
-                        cell = tk.Button(inner, text="", width="143", height="110", background="sandybrown",
-                            image=self.gui_objects.tkphoto,
-                                         command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+                        if row_num <= 1:
+                            # black side
+                            cell = tk.Button(inner, text="", width="143", height="110", background="sandybrown",
+                                             image=self.black_order.popleft(),
+                                             command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
-                        cell.grid(row=row, column=col)
-                        self.gui_objects.gui_board[row][col] = cell
+                            cell.grid(row=row, column=col)
+                            self.gui_objects.gui_board[row][col] = cell
+                        else:
+                            # white side
+                            cell = tk.Button(inner, text="", width="143", height="110", background="sandybrown",
+                                             image=self.white_order.popleft(),
+                                             command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+
+                            cell.grid(row=row, column=col)
+                            self.gui_objects.gui_board[row][col] = cell
                     clr = False
                 elif clr is False:
                     if row_num > 1 and row_num < 6:
@@ -76,12 +89,22 @@ class GuiBoard:
                         cell.grid(row=row, column=col)
                         self.gui_objects.gui_board[row][col] = cell
                     else:
-                        cell = tk.Button(inner, text=" ", width="143", height="110", background="saddlebrown",
-                            image=self.gui_objects.tkphoto,
-                                         command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+                        if row_num <= 1:
+                            # black side
+                            cell = tk.Button(inner, text=" ", width="143", height="110", background="saddlebrown",
+                                             image=self.black_order.popleft(),
+                                             command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
-                        cell.grid(row=row, column=col)
-                        self.gui_objects.gui_board[row][col] = cell
+                            cell.grid(row=row, column=col)
+                            self.gui_objects.gui_board[row][col] = cell
+                        else:
+                            # white side
+                            cell = tk.Button(inner, text=" ", width="143", height="110", background="saddlebrown",
+                                             image=self.white_order.popleft(),
+                                             command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+
+                            cell.grid(row=row, column=col)
+                            self.gui_objects.gui_board[row][col] = cell
 
                     clr = True
             row_num += 1

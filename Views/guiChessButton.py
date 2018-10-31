@@ -11,14 +11,18 @@ class GuiObjects:
         self.from_spot = tuple()
         self.to_spot = tuple()
         self.icons = guiIcons.GuiIcons()  # icon class
-        self.testphoto = Image.open('knightw.png')
-        self.tkphoto = ImageTk.PhotoImage(self.testphoto)
         # hold the memory addresses of the buttons in a matrix
         self.gui_board = [[0 for x in range(8)] for y in range(8)]
 
     def update(self, to_spot, from_spot):
         self.game.update_board(to_spot, self.game.get_piece(from_spot))
         self.game.update_board(from_spot, 0)
+
+    def look_up_name(self):
+        # look up the icon to place
+        look_up_name = self.game.get_piece_color(self.from_spot) + self.game.get_piece_type(self.from_spot)
+
+        return self.icons.get_icon(look_up_name)
 
     # event listener to control the visual movement of a piece
     def event_click(self, row, col):
@@ -36,6 +40,7 @@ class GuiObjects:
             move = self.game.find_move_value(self.from_spot, self.to_spot)
 
             # check to make sure an empty first spot was not selected
+            # check for movement to empty spot
             if self.game.spot_is_zero(self.from_spot) is False:
                 # check if the piece is the same color as the turn
                 if self.game.get_piece_color(self.from_spot) is self.game.get_turn_color():
@@ -45,21 +50,25 @@ class GuiObjects:
                         if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
                             # check if the move path is valid
                             if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True:
-                                if self.game.can_be_promoted(self.from_spot, self.to_spot):
+                                if self.game.can_be_promoted(self.from_spot, self.to_spot) is True:
                                     print()
+
+                                look_up_name = self.game.get_piece_color(self.from_spot) + \
+                                    self.game.get_piece_type(self.from_spot)
 
                                 # update the board
                                 self.update(self.to_spot, self.from_spot)
                                 # update the GUI
                                 self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='', width="20",
                                                                                                height="7")
-                                self.gui_board[row][col].configure(image=self.tkphoto, width="143", height="110")
+                                self.gui_board[row][col].configure(image=self.icons.get_icon(look_up_name),
+                                                                   width="143", height="110")
 
                                 # flip the turn so the other color could move
                                 self.game.filp_trun()
 
                     else:
-                        # check if the color of the selected piece does not match the spot
+                        # check if the color of the selected piece does not match the spot thus can take the piece
                         if self.game.get_piece_color(self.to_spot) is not self.game.get_piece_color(self.from_spot):
                             # check if the move path is valid
                             if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True:
@@ -72,6 +81,9 @@ class GuiObjects:
                                         if self.game.can_be_promoted(self.from_spot, self.to_spot):
                                             print()
 
+                                        look_up_name = self.game.get_piece_color(self.from_spot) + \
+                                                       self.game.get_piece_type(self.from_spot)
+
                                         # check if the game is over
                                         if self.game.is_game_done(self.to_spot) is True:
                                             print(self.game.get_piece_color(self.from_spot) + " Won")
@@ -82,8 +94,8 @@ class GuiObjects:
                                         self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='',
                                                                                                        width="20",
                                                                                                        height="7")
-                                        self.gui_board[row][col].configure(image=self.tkphoto, width="143",
-                                                                           height="110")
+                                        self.gui_board[row][col].configure(image=self.icons.get_icon(look_up_name),
+                                                                           width="143", height="110")
 
                                         # flip the turn so the other color could move
                                         self.game.filp_trun()
@@ -95,12 +107,12 @@ class GuiObjects:
                                         # take the piece
                                         self.game.take_piece(self.to_spot)
 
-                                        if self.game.can_be_promoted(self.from_spot, self.to_spot):
-                                            print()
-
                                         # check if the game is over
                                         if self.game.is_game_done(self.to_spot) is True:
                                             print(self.game.get_piece_color(self.from_spot) + " Won")
+
+                                        look_up_name = self.game.get_piece_color(self.from_spot) + \
+                                                       self.game.get_piece_type(self.from_spot)
 
                                         # update the board
                                         self.update(self.to_spot, self.from_spot)
@@ -108,8 +120,8 @@ class GuiObjects:
                                         self.gui_board[self.from_spot[0]][self.from_spot[1]].configure(image='',
                                                                                                        width="20",
                                                                                                        height="7")
-                                        self.gui_board[row][col].configure(image=self.tkphoto, width="143",
-                                                                           height="110")
+                                        self.gui_board[row][col].configure(image=self.icons.get_icon(look_up_name),
+                                                                           idth="143", height="110")
 
                                         # flip the turn so the other color could move
                                         self.game.filp_trun()
