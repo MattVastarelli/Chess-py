@@ -53,11 +53,21 @@ class GuiIcons:
 
     def black_order(self):
         # black starting order
-        return None
+        black_order = [self.black_rook, self.black_knight, self.black_bishop_img, self.black_queen, self.black_king,
+                       self.black_bishop_img, self.black_knight, self.black_rook, self.black_pawn, self.black_pawn,
+                       self.black_pawn, self.black_pawn, self.black_pawn, self.black_pawn, self.black_pawn,
+                       self.black_pawn
+                       ]
+        return black_order
 
     def white_order(self):
         # white starting order
-        return None
+        white_order = [self.white_rook, self.white_knight, self.white_bishop_img, self.white_queen, self.white_king,
+                       self.white_bishop_img, self.white_knight, self.white_rook, self.white_pawn, self.white_pawn,
+                       self.white_pawn, self.white_pawn, self.white_pawn, self.white_pawn, self.white_pawn,
+                       self.white_pawn
+                       ]
+        return white_order
 
     def get_icon(self, name):
         return self.icon_dict[name]

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/Chess-main.py" line="0" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="af0ecb98-dd2d-42a2-ab61-9250d5b33b0f" name="Default" comment="added game class and methods to build the play and display board">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/mvast.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/mvast.xml" afterDir="false" />
+    <list default="true" id="67eb2011-806a-48c1-98d1-87d91f4537ae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Chess-py.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Chess-py.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/guiBoard.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/guiBoard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/guiIcons.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/guiIcons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/king.png" beforeDir="false" afterPath="$PROJECT_DIR$/king.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kingw.png" beforeDir="false" afterPath="$PROJECT_DIR$/kingw.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queen.png" beforeDir="false" afterPath="$PROJECT_DIR$/queen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rook.png" beforeDir="false" afterPath="$PROJECT_DIR$/rook.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,42 +20,49 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1942581266">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="3" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="447" />
+          <entry key="txt" value="11" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="11" />
+          <entry key="Python" value="447" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Chess-main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Chess-main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="30" selection-start-column="30" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chessPiece.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/chessPiece.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="guiBoard.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/guiBoard.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="guiChessButton.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Views/guiChessButton.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="-187">
               <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
@@ -59,41 +71,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="guiIcons.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="guiBoard.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Views/guiBoard.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="80" column="58" lean-forward="true" selection-start-line="80" selection-start-column="58" selection-end-line="80" selection-end-column="58" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="guiIcons.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Views/guiIcons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controller/game.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2584">
-              <caret line="152" column="23" selection-start-line="152" selection-start-column="23" selection-end-line="152" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="board.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/board.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1768">
-              <caret line="104" selection-start-line="104" selection-end-line="104" />
+            <state relative-caret-position="-510">
+              <caret line="6" column="67" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="67" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -101,25 +103,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Models/__init__.py" />
-        <option value="$PROJECT_DIR$/Controller/__init__.py" />
-        <option value="$PROJECT_DIR$/Views/safe.py" />
-        <option value="$PROJECT_DIR$/Views/printHelper.py" />
-        <option value="$PROJECT_DIR$/Models/board.py" />
-        <option value="$PROJECT_DIR$/Views/GUI.py" />
-        <option value="$PROJECT_DIR$/Views/guiHelper.py" />
-        <option value="$PROJECT_DIR$/Models/chessPiece.py" />
         <option value="$PROJECT_DIR$/Controller/game.py" />
         <option value="$PROJECT_DIR$/Chess-main.py" />
-        <option value="$PROJECT_DIR$/Views/guiBoard.py" />
-        <option value="$PROJECT_DIR$/Views/guiChessButton.py" />
+        <option value="$PROJECT_DIR$/Models/chessPiece.py" />
+        <option value="$PROJECT_DIR$/Views/GUI.py" />
+        <option value="$PROJECT_DIR$/../pyhton/Assigment 6/myNumberList.py" />
         <option value="$PROJECT_DIR$/Views/guiIcons.py" />
+        <option value="$PROJECT_DIR$/Views/guiBoard.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="280" />
-    <option name="y" value="127" />
+    <option name="x" value="188" />
+    <option name="y" value="-21" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -137,11 +133,6 @@
               <item name="Chess-py" type="b2602c69:ProjectViewProjectNode" />
               <item name="Chess-py" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Chess-py" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Chess-py" type="462c0819:PsiDirectoryNode" />
-              <item name="Views" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -149,17 +140,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Views/GUI.py" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Chess-main.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\mvast\OneDrive\Documents\Chess-py" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mvast\OneDrive\Documents\Chess-py" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -173,15 +155,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RunPy">
-    <configuration name="RunPy" type="PythonConfigurationType" factoryName="Python">
+  <component name="RunManager">
+    <configuration name="ChessMain" type="PythonConfigurationType" factoryName="Python">
       <module name="Chess-py" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\mvast\AppData\Local\Programs\Python\Python36-32\python.exe" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Chess-main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Chess-py" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\matth\AppData\Local\Programs\Python\Python37-32\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -192,258 +192,26 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="gui" type="PythonConfigurationType" factoryName="Python">
-      <module name="Chess-py" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\mvast\AppData\Local\Programs\Python\Python36-32\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Views" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Views/GUI.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.RunPy" />
-      <item itemvalue="Python.gui" />
-    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="af0ecb98-dd2d-42a2-ab61-9250d5b33b0f" name="Default" comment="" />
-      <created>1537981271552</created>
+      <changelist id="67eb2011-806a-48c1-98d1-87d91f4537ae" name="Default Changelist" comment="" />
+      <created>1538074586741</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1537981271552</updated>
+      <updated>1538074586741</updated>
     </task>
-    <task id="LOCAL-00001" summary="Added Pawn and chess piece model as well as testing the getters and setters">
-      <created>1537993526780</created>
+    <task id="LOCAL-00001" summary="Commit icon">
+      <created>1539904336142</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1537993526780</updated>
+      <updated>1539904336142</updated>
     </task>
-    <task id="LOCAL-00002" summary="All pieces added need to adress pawn movement and castling">
-      <created>1537999063285</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1537999063285</updated>
-    </task>
-    <task id="LOCAL-00003" summary="added game class and methods to build the play and display board">
-      <created>1538012702224</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1538012702224</updated>
-    </task>
-    <task id="LOCAL-00004" summary="update TODO and light comments">
-      <created>1538013608484</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1538013608484</updated>
-    </task>
-    <task id="LOCAL-00005" summary="todo">
-      <created>1538014045310</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1538014045310</updated>
-    </task>
-    <task id="LOCAL-00006" summary="cleaned up comments, files. Made board class, print helper file, views dir, main function">
-      <created>1538337427327</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1538337427327</updated>
-    </task>
-    <task id="LOCAL-00007" summary="__init__ files">
-      <created>1538338568775</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1538338568775</updated>
-    </task>
-    <task id="LOCAL-00008" summary="formated gui under pep8 guidelines">
-      <created>1539476215821</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1539476215821</updated>
-    </task>
-    <task id="LOCAL-00009" summary="put the GUI in a class and is now callable from main">
-      <created>1539477501967</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1539477501967</updated>
-    </task>
-    <task id="LOCAL-00010" summary="tested build of starting board works needs to have the correct pieces added">
-      <created>1539483480267</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1539483480267</updated>
-    </task>
-    <task id="LOCAL-00011" summary="gui now holds the last two clicks thus making taking actions possiable">
-      <created>1539486963491</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1539486963491</updated>
-    </task>
-    <task id="LOCAL-00012" summary="implement gui helper class and some of the connection to the controller also handled negitive and caculating movement">
-      <created>1539538227562</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1539538227562</updated>
-    </task>
-    <task id="LOCAL-00013" summary="peices can now be moved on the gui">
-      <created>1539545946254</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1539545946254</updated>
-    </task>
-    <task id="LOCAL-00014" summary="move valadtion that does not check if a piece is blocking its path">
-      <created>1539996620532</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1539996620532</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Fixed error if an empty spot is clicked">
-      <created>1539997471695</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1539997471695</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Update board on valid move and first move of pawn">
-      <created>1539999001436</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1539999001436</updated>
-    </task>
-    <task id="LOCAL-00017" summary="remove redundant code">
-      <created>1539999256084</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1539999256084</updated>
-    </task>
-    <task id="LOCAL-00018" summary="fixed Pawn move case">
-      <created>1540001649994</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1540001649994</updated>
-    </task>
-    <task id="LOCAL-00019" summary="todos and stubs">
-      <created>1540002328533</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1540002328533</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Moved gui board into its own file">
-      <created>1540154498135</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1540154498135</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Check for turn color">
-      <created>1540234926008</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1540234926009</updated>
-    </task>
-    <task id="LOCAL-00022" summary="enforced turns">
-      <created>1540235297576</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1540235297576</updated>
-    </task>
-    <task id="LOCAL-00023" summary="check for 0 and occupied spot">
-      <created>1540236404689</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1540236404689</updated>
-    </task>
-    <task id="LOCAL-00024" summary="added method to remove piece on capture">
-      <created>1540244791934</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1540244791934</updated>
-    </task>
-    <task id="LOCAL-00025" summary="renamed file">
-      <created>1540244991986</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1540244991986</updated>
-    </task>
-    <task id="LOCAL-00026" summary="add pawn capture method">
-      <created>1540253277767</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1540253277767</updated>
-    </task>
-    <task id="LOCAL-00027" summary="method to check for end of game">
-      <created>1540254717642</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1540254717642</updated>
-    </task>
-    <task id="LOCAL-00028" summary="check for promotion">
-      <created>1540256893302</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1540256893302</updated>
-    </task>
-    <task id="LOCAL-00029" summary="fixed bishop and queen move pattern">
-      <created>1540258046353</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1540258046353</updated>
-    </task>
-    <task id="LOCAL-00030" summary="added method to stop pieces from moving through other pieces">
-      <created>1540264658528</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1540264658528</updated>
-    </task>
-    <task id="LOCAL-00031" summary="icon download, start of icon class">
-      <created>1540865334319</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1540865334319</updated>
-    </task>
-    <option name="localTasksCounter" value="32" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -452,118 +220,52 @@
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.55845773" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.07864583" side_tool="true" visible="true" weight="0.18042813" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49739584" weight="0.07543323" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.0734375" side_tool="true" visible="true" weight="0.18042813" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.496875" weight="0.07543323" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.9213542" weight="0.18042813" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.9265625" visible="true" weight="0.18042813" />
       <window_info id="Structure" order="1" sideWeight="0.4415423" side_tool="true" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49895832" weight="0.13557595" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32952183" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.14760914" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49947917" weight="0.32925585" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="__init__ files" />
-    <MESSAGE value="formated gui under pep8 guidelines" />
-    <MESSAGE value="put the GUI in a class and is now callable from main" />
-    <MESSAGE value="tested build of starting board works needs to have the correct pieces added" />
-    <MESSAGE value="gui now holds the last two clicks thus making taking actions possiable" />
-    <MESSAGE value="implement gui helper class and some of the connection to the controller also handled negitive and caculating movement" />
-    <MESSAGE value="peices can now be moved on the gui" />
-    <MESSAGE value="move valadtion that does not check if a piece is blocking its path" />
-    <MESSAGE value="Fixed error if an empty spot is clicked" />
-    <MESSAGE value="Update board on valid move and first move of pawn" />
-    <MESSAGE value="remove redundant code" />
-    <MESSAGE value="fixed Pawn move case" />
-    <MESSAGE value="todos and stubs" />
-    <MESSAGE value="Moved gui board into its own file" />
-    <MESSAGE value="Check for turn color" />
-    <MESSAGE value="enforced turns" />
-    <MESSAGE value="check for 0 and occupied spot" />
-    <MESSAGE value="added method to remove piece on capture" />
-    <MESSAGE value="renamed file" />
-    <MESSAGE value="add pawn capture method" />
-    <MESSAGE value="method to check for end of game" />
-    <MESSAGE value="check for promotion" />
-    <MESSAGE value="fixed bishop and queen move pattern" />
-    <MESSAGE value="added method to stop pieces from moving through other pieces" />
-    <MESSAGE value="icon download, start of icon class" />
-    <option name="LAST_COMMIT_MESSAGE" value="icon download, start of icon class" />
+    <MESSAGE value="Commit icon" />
+    <MESSAGE value="update icons and place them on the correct starting spot" />
+    <option name="LAST_COMMIT_MESSAGE" value="update icons and place them on the correct starting spot" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Chess-main.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Models/board.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/guiHelper.py" />
-    <entry file="file://$PROJECT_DIR$/Chess-main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="84" column="54" selection-start-line="84" selection-start-column="54" selection-end-line="84" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/guiHelper.py" />
-    <entry file="file://$PROJECT_DIR$/Models/chessPiece.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/board.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="41" column="65" lean-forward="true" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Chess-main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="84" column="54" selection-start-line="84" selection-start-column="54" selection-end-line="84" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/guiHelper.py" />
     <entry file="file://$PROJECT_DIR$/Models/chessPiece.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -755,15 +457,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/guiBoard.py">
+    <entry file="file://$PROJECT_DIR$/Models/chessPiece.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+        <state relative-caret-position="170">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/guiHelper.py" />
+    <entry file="file://$PROJECT_DIR$/Controller/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2584">
+          <caret line="152" column="23" selection-start-line="152" selection-start-column="23" selection-end-line="152" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Chess-main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" selection-start-column="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../pyhton/Assigment 6/myNumberList.py" />
+    <entry file="file://$PROJECT_DIR$/Views/GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="32" lean-forward="true" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kingw.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/knightw.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Models/chessPiece.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -774,7 +505,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/guiChessButton.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="-187">
           <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
@@ -782,27 +513,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/guiIcons.py">
+    <entry file="file://$PROJECT_DIR$/Models/board.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+        <state relative-caret-position="1768">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/rook.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/guiIcons.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret line="6" column="67" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/guiBoard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="80" column="58" lean-forward="true" selection-start-line="80" selection-start-column="58" selection-end-line="80" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
