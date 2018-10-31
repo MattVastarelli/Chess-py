@@ -183,7 +183,7 @@ class Game:
                     else:
                         return False
                 else:
-                    if move in piece.get_valid_moves() or [(2, 0)]:
+                    if move in [(1, 0), (2, 0)]:
                         piece.set_first_move(False)
                         return True
                     else:
