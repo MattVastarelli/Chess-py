@@ -1,5 +1,6 @@
 from Controller import game
 from PIL import Image, ImageTk
+#Make sure that you install pillow on your machine, or you will not be able to run the program.
 
 
 class GuiHelper:
