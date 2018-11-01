@@ -145,12 +145,20 @@ class Game:
             return True
         else:
             move_path = self.get_move_path(from_spot, to_spot)
-            print(move_path)
-            for spot in move_path:
-                if self.is_spot_occupied(spot) is True:
-                    return False
+            distance_covered = 1
+            if self.get_piece_type(from_spot) is not "Pawn":
+                move_path.append(to_spot)
 
-            return True
+                for spot in move_path:
+                    if self.is_spot_occupied(spot) is True:
+                        if len(move_path) is not distance_covered:
+                            return False
+                        else:
+                            return True
+                    distance_covered += 1
+
+            else:  # is pawn
+                return True
 
     def pawn_capture(self, from_spot, to_spot):
         piece = self.board.get_spot(from_spot[0], from_spot[1])

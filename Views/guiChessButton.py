@@ -66,14 +66,13 @@ class GuiObjects:
 
                                 # flip the turn so the other color could move
                                 self.game.filp_trun()
-
                     else:
                         # check if the color of the selected piece does not match the spot thus can take the piece
                         if self.game.get_piece_color(self.to_spot) is not self.game.get_piece_color(self.from_spot):
                             # check if the move path is valid
-                            if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True:
-                                # handle the pawn capture case
-                                if self.game.get_piece_type(self.from_spot) is "Pawn":
+                            if self.game.get_piece_type(self.from_spot) is "Pawn":
+                                if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True:
+                                    # handle the pawn capture case
                                     if self.game.pawn_capture(self.from_spot, self.to_spot) is True:
                                         # take the piece
                                         self.game.take_piece(self.to_spot)
@@ -82,7 +81,7 @@ class GuiObjects:
                                             print()
 
                                         look_up_name = self.game.get_piece_color(self.from_spot) + \
-                                                       self.game.get_piece_type(self.from_spot)
+                                            self.game.get_piece_type(self.from_spot)
 
                                         # check if the game is over
                                         if self.game.is_game_done(self.to_spot) is True:
@@ -112,7 +111,9 @@ class GuiObjects:
                                             print(self.game.get_piece_color(self.from_spot) + " Won")
 
                                         look_up_name = self.game.get_piece_color(self.from_spot) + \
-                                                       self.game.get_piece_type(self.from_spot)
+                                            self.game.get_piece_type(self.from_spot)
+
+                                        print(look_up_name)
 
                                         # update the board
                                         self.update(self.to_spot, self.from_spot)
@@ -121,7 +122,7 @@ class GuiObjects:
                                                                                                        width="20",
                                                                                                        height="7")
                                         self.gui_board[row][col].configure(image=self.icons.get_icon(look_up_name),
-                                                                           idth="143", height="110")
+                                                                           width="143", height="110")
 
                                         # flip the turn so the other color could move
                                         self.game.filp_trun()
