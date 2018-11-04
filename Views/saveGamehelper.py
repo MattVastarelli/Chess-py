@@ -14,12 +14,15 @@ class saveToFile:
     def buildSaveGame (self, parent):
         #outer = tk.Frame(parent, border = 5, background = "sandybrown", relief = 'sunken')
         #inner = tk.Frame(outer, backgroud = "saddlebrown")
-        for i in range (3):           
+        for i in range (3):
             if i == 0:
-                saveButton = tk.Button(self.saveGame, text = "Save Game", width = "35", height = "7", command = self.event_save)
+                textBox = tk.Entry(self.saveGame, text = "Type in name for saved game")
+                textBox.pack()
+            if i == 1:
+                saveButton = tk.Button(self.saveGame, text = "Save Game", width = "35", height = "5", command = self.event_save)
                 saveButton.pack()
-            elif i == 1:
-                cancelButton = tk.Button(self.saveGame, text = "Cancel", width = "35", height = "7", command = self.event_cancel)
+            if i == 2:
+                cancelButton = tk.Button(self.saveGame, text = "Cancel", width = "35", height = "5", command = self.event_cancel)
                 cancelButton.pack()
     def showSaveGame(self):
         self.event_save = self.function_tabs

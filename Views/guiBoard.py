@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox as mb
 from Views import guiHelper
+from Views import saveGamehelper
 
 
 class GuiBoard:
@@ -17,7 +18,7 @@ class GuiBoard:
     # This builds the menu
     def build_menu(self, parent):
         menus = (("File", (("New Game", self.event_new),
-                      ("Save Game", self.event_save),
+                      ("Save Game", self.saveGame),
                       ("Exit", self.event_exit))),
             ("Help", (("Help", self.event_help),
                       ("About", self.event_about))),)
@@ -34,6 +35,10 @@ class GuiBoard:
 
     # This is just to represent what we plan to do later, meaningless at this
     # point.
+    def saveGame(self):
+        sg = saveGamehelper.saveToFile()
+        sg.runSave()
+
     def function_tabs(self,):
         mb.showinfo("Test", "to be developed later")
 
