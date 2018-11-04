@@ -9,9 +9,6 @@ class ChessPiece:
         # valid moves are represented as a list of tuples were
         # the first item is the X axis and second the Y axis
         self.is_promoted = False  # for pawn
-        self.move_through_piece = False
-        # can the piece move to a given spot if its path
-        # is obstructed by another piece
         self.first_move = True
 
     # various getters
@@ -72,7 +69,8 @@ class Rook(ChessPiece):
         self.valid_moves = [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
                             (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7),
                             (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
-                            (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7)]
+                            (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7)
+                            ]
 
 
 class Knight(ChessPiece):
@@ -88,7 +86,10 @@ class Bishop(ChessPiece):
         ChessPiece.__init__(self, color, number)
         self.name = 'Bishop'
         self.valid_moves = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7),
-                            (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)]
+                            (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7),
+                            (-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7),
+                            (1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7)
+                            ]
 
 
 class Queen(ChessPiece):
@@ -100,7 +101,10 @@ class Queen(ChessPiece):
                             (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7),
                             (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
                             (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
-                            (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)]
+                            (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7),
+                            (-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7),
+                            (1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7)
+                            ]
 
 
 class King(ChessPiece):
