@@ -3,6 +3,7 @@ import tkinter.messagebox as mb
 from Views import guiChessButton
 from Views import guiIcons
 from collections import deque
+from Views import saveGamehelper
 
 
 class GuiBoard:
@@ -40,6 +41,10 @@ class GuiBoard:
     # This is just to represent what we plan to do later, meaningless at this point.
     def function_tabs(self,):
         mb.showinfo("Test", "to be developed later")
+    # Saves the game, opens the GUI diaglog that performs save game.
+    def eventSave(self,):
+        esgui = saveGamehelper.saveToFile()
+        esgui.runSave()
 
     # build the chess board
     def build_chess_board(self, parent):
@@ -112,7 +117,7 @@ class GuiBoard:
 
     def show_board(self):
         self.event_new = self.function_tabs
-        self.event_save = self.function_tabs
+        self.event_save = self.eventSave
         self.event_exit = self.top.destroy
         self.event_help = self.function_tabs
         self.event_about = self.function_tabs
