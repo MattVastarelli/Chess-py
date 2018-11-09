@@ -49,7 +49,6 @@ class Game:
         if piece.get_name() is "Pawn":
             # if in last row
             if move_spot[0] is 7 or move_spot[0] is 0:
-                print("promoted")
                 return True
             else:
                 return False
@@ -148,7 +147,6 @@ class Game:
             distance_covered = 1
             if self.get_piece_type(from_spot) is not "Pawn":
                 move_path.append(to_spot)
-
                 for spot in move_path:
                     if self.is_spot_occupied(spot) is True:
                         if len(move_path) is not distance_covered:
@@ -156,9 +154,10 @@ class Game:
                         else:
                             return True
                     distance_covered += 1
-
+                return True
             else:  # is pawn
                 return True
+
 
     def pawn_capture(self, from_spot, to_spot):
         piece = self.board.get_spot(from_spot[0], from_spot[1])
