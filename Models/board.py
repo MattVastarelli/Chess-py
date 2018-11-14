@@ -102,3 +102,4 @@ class Board:
 
     def set_spot(self, x, y, piece):
         self.game_board[x][y] = piece
+

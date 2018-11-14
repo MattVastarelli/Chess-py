@@ -1,6 +1,8 @@
 from tkinter import *
 import tkinter.messagebox as mb
 from PIL import Image, ImageTk
+from Models import board
+from Controller import game
 
 class saveToFile:
     def __init__(self):
@@ -30,8 +32,37 @@ class saveToFile:
                 cancelButton.pack(side = RIGHT)
     def readoutFile (self):
         text1 = self.textBox.get()
-        print (test1)
-        fn = open(text1, w)
+        print (text1)
+        text1 += ".txt"
+        fn = open(text1, 'w')
+        checkforpiece = game.Game()
+        x = 0
+        y = 0
+        while y <= 7:
+            while x <= 7:
+                tuple1 = (x,y)
+                x+=1
+                occupied = checkforpiece.is_spot_occupied(tuple1)
+                if occupied == True:
+                    piece = checkforpiece.get_piece_type(tuple1)
+                    color = checkforpiece.get_piece_color(tuple1)
+                    tofile = str(tuple1)
+                    tofile +='@'
+                    color = str(color)
+                    tofile += color
+                    tofile += '@'
+                    piece = str(piece)
+                    tofile += piece
+                    fn.write(tofile)
+                    fn.write('\n')
+                    
+                elif occupied == False:
+                    continue
+            x = 0
+            y+=1
+        fn.close()
+        self.saveGame.destroy()
+
         
     def showSaveGame(self):
         self.event_save = self.readoutFile
