@@ -45,11 +45,11 @@ class GuiObjects:
                 # check if the piece is the same color as the turn
                 if self.game.get_piece_color(self.from_spot) is self.game.get_turn_color():
                     # check to se of the space is empty
-                    if self.game.is_spot_occupied(self.to_spot) is False:
+                    if self.game.is_spot_occupied(self.to_spot) is False: # movement to open spot is wrong
                         # call the method to check if the move is valid
                         if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
                             # check if the move path is valid
-                            if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True:
+                            if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True: # occur error on empty spot , this is the clause
                                 if self.game.can_be_promoted(self.from_spot, self.to_spot) is True:
                                     print()
 
@@ -112,8 +112,6 @@ class GuiObjects:
 
                                         look_up_name = self.game.get_piece_color(self.from_spot) + \
                                             self.game.get_piece_type(self.from_spot)
-
-                                        print(look_up_name)
 
                                         # update the board
                                         self.update(self.to_spot, self.from_spot)
