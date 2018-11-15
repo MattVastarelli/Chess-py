@@ -36,7 +36,6 @@ class SaveToFile:
 
     def readout_file(self):
         text1 = self.text_box.get()
-        print(text1)
         text1 += ".txt"
         fn = open(text1, 'w')
         x = 0

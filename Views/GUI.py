@@ -13,7 +13,6 @@ class SplashScreen:
         self.tkphoto1 = ImageTk.PhotoImage(self.bgphoto)
         self.welcome.resizable(0, 0)
         self.event_new = ''
-        self.event_resume = ''
         self.event_help = ''
         self.event_about = ''
         self.event_exit = ''
@@ -29,6 +28,11 @@ class SplashScreen:
         gui = guiBoard.GuiBoard()
         gui.run()
 
+    def resume_game(self):
+        # read from the save file and start the new game
+        
+        return None
+
     def build_splash_screen(self, parent):
         backpic = tk.Label(self.welcome, image=self.tkphoto1)
         backpic.place(x=0, y=0, relwidth=1, relheight=1)
@@ -37,10 +41,10 @@ class SplashScreen:
         inner.pack()
         for i in range(5):
             if i == 0:
-               b1 = tk.Button(inner, text="New Game", width="35", height="7", command =self.start_game)
+               b1 = tk.Button(inner, text="New Game", width="35", height="7", command=self.start_game)
                b1.pack()
             if i == 1:
-               b2 = tk.Button(inner, text="Resume Game", width="35", height="7", command=self.event_resume)
+               b2 = tk.Button(inner, text="Resume Game", width="35", height="7", command=self.resume_game)
                b2.pack()
             if i == 2:
                b3 = tk.Button(inner, text="Help", width="35", height="7", command=self.event_help)
