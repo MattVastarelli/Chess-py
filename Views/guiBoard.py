@@ -2,7 +2,6 @@ import tkinter as tk
 import tkinter.messagebox as mb
 from Views import guiChessButton
 from Views import guiIcons
-from collections import deque
 from Views import saveGamehelper
 
 
@@ -10,6 +9,7 @@ class GuiBoard:
     # main GUI class to build the gui and launch call the controller methods
     def __init__(self):
         self.top = tk.Tk()
+        self.top.title("Chess")
         self.event_new = ''
         self.event_save = ''
         self.event_help = ''

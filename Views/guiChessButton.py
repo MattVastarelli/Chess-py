@@ -1,15 +1,16 @@
 from Controller import game
-from PIL import Image, ImageTk
 from Views import guiIcons
+import tkinter as tk
 
 
 class GuiObjects:
     # button class to shorten and simplify the main gui
     def __init__(self):
-        self.game = game.Game() # main controller class
+        self.game = game.Game()  # main controller class
         self.click_count = 0
         self.from_spot = tuple()
         self.to_spot = tuple()
+        self.promotion_piece = ''
         self.icons = guiIcons.GuiIcons()  # icon class
         # hold the memory addresses of the buttons in a matrix
         self.gui_board = [[0 for x in range(8)] for y in range(8)]
@@ -23,6 +24,73 @@ class GuiObjects:
         look_up_name = self.game.get_piece_color(self.from_spot) + self.game.get_piece_type(self.from_spot)
 
         return self.icons.get_icon(look_up_name)
+
+    def add_turn_color(self):
+        # add the turn color to the piece the user chose
+        print(self.promotion_piece)
+
+        return None
+
+
+    def promotion_box(self):
+        # message box to select the piece added to the board after promotion
+
+        prompt = tk.Toplevel()
+        prompt.title("Promotion")
+
+        discrip = tk.Label(prompt, text="Select the piece you wish to promote to")
+        discrip.grid(row=0, column=0, padx=10, pady=2)
+
+        piece_frame = tk.Frame(prompt)
+        piece_frame.grid(row=1, column=0, padx=10, pady=10)
+
+        # frames for the various options
+        opt = tk.Frame(piece_frame)
+        opt.grid(row=1, column=0, padx=10, pady=5)
+
+        opt1 = tk.Frame(piece_frame)
+        opt1.grid(row=2, column=0, padx=10, pady=5)
+
+        opt2 = tk.Frame(piece_frame)
+        opt2.grid(row=3, column=0, padx=10, pady=5)
+
+        opt3 = tk.Frame(piece_frame)
+        opt3.grid(row=4, column=0, padx=10, pady=5)
+
+        opt4 = tk.Frame(piece_frame)
+        opt4.grid(row=5, column=0, pady=10)
+
+        # buttons to submit the promotion
+        b = tk.Button(opt, text="Promote")
+        b.pack(side=tk.LEFT)
+
+        b1 = tk.Button(opt1, text="Promote")
+        b1.grid(row=0, column=0)
+
+        b2 = tk.Button(opt2, text="Promote")
+        b2.pack(side=tk.LEFT)
+
+        b3 = tk.Button(opt3, text="Promote")
+        b3.pack(side=tk.LEFT)
+
+        # labels for the buttons
+        knight = tk.Label(opt, text="Knight", anchor="nw")
+        knight.pack(side=tk.LEFT)
+
+        rook = tk.Label(opt1, text="Rook ", anchor="nw")
+        rook.grid(row=0, column=1, padx=3)
+
+        bishop = tk.Label(opt2, text="Bishop", anchor="nw")
+        bishop.pack(side=tk.LEFT)
+
+        queen = tk.Label(opt3, text="Queen", anchor="nw")
+        queen.pack(side=tk.LEFT)
+
+        # close button
+        close = tk.Button(opt4, text="Close", command=prompt.destroy)
+        close.pack()
+
+        return None
 
     # event listener to control the visual movement of a piece
     def event_click(self, row, col):
@@ -49,9 +117,9 @@ class GuiObjects:
                         # call the method to check if the move is valid
                         if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
                             # check if the move path is valid
-                            if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True: # occur error on empty spot , this is the clause
-                                if self.game.can_be_promoted(self.from_spot, self.to_spot) is True:
-                                    print()
+                            if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True:
+                                if self.game.can_be_promoted(self.from_spot, self.to_spot) or True:#remove once done
+                                    self.promotion_box()
 
                                 look_up_name = self.game.get_piece_color(self.from_spot) + \
                                     self.game.get_piece_type(self.from_spot)

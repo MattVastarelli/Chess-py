@@ -4,7 +4,6 @@ from collections import deque
 
 class GuiIcons:
     # class to handle the creation and storage of the icons
-    # all icons by Freepik https://www.flaticon.com/authors/freepik
 
     def __init__(self):
         # instantiate all the icons
