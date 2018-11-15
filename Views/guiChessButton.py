@@ -7,10 +7,10 @@ class GuiObjects:
     # button class to shorten and simplify the main gui
     def __init__(self):
         self.game = game.Game()  # main controller class
+        self.prompt = ''
         self.click_count = 0
         self.from_spot = tuple()
         self.to_spot = tuple()
-        self.promotion_piece = ''
         self.icons = guiIcons.GuiIcons()  # icon class
         # hold the memory addresses of the buttons in a matrix
         self.gui_board = [[0 for x in range(8)] for y in range(8)]
@@ -25,23 +25,40 @@ class GuiObjects:
 
         return self.icons.get_icon(look_up_name)
 
-    def add_turn_color(self):
-        # add the turn color to the piece the user chose
-        print(self.promotion_piece)
+    def promotion(self, piece):
+        print(piece)
 
         return None
 
+    def knight(self):
+        self.promotion("Knight")
+        self.prompt.destroy()
+        return None
+
+    def rook(self):
+        self.promotion("Rook")
+        self.prompt.destroy()
+        return None
+
+    def queen(self):
+        self.promotion("Queen")
+        self.prompt.destroy()
+        return None
+
+    def bishop(self):
+        self.promotion("Bishop")
+        self.prompt.destroy()
+        return None
 
     def promotion_box(self):
         # message box to select the piece added to the board after promotion
+        self.prompt = tk.Toplevel()
+        self.prompt.title("Promotion")
 
-        prompt = tk.Toplevel()
-        prompt.title("Promotion")
-
-        discrip = tk.Label(prompt, text="Select the piece you wish to promote to")
+        discrip = tk.Label(self.prompt, text="Select the piece you wish to promote to")
         discrip.grid(row=0, column=0, padx=10, pady=2)
 
-        piece_frame = tk.Frame(prompt)
+        piece_frame = tk.Frame(self.prompt)
         piece_frame.grid(row=1, column=0, padx=10, pady=10)
 
         # frames for the various options
@@ -61,16 +78,16 @@ class GuiObjects:
         opt4.grid(row=5, column=0, pady=10)
 
         # buttons to submit the promotion
-        b = tk.Button(opt, text="Promote")
+        b = tk.Button(opt, text="Promote", command=self.knight)
         b.pack(side=tk.LEFT)
 
-        b1 = tk.Button(opt1, text="Promote")
+        b1 = tk.Button(opt1, text="Promote", command=self.rook)
         b1.grid(row=0, column=0)
 
-        b2 = tk.Button(opt2, text="Promote")
+        b2 = tk.Button(opt2, text="Promote", command=self.bishop)
         b2.pack(side=tk.LEFT)
 
-        b3 = tk.Button(opt3, text="Promote")
+        b3 = tk.Button(opt3, text="Promote", command=self.queen)
         b3.pack(side=tk.LEFT)
 
         # labels for the buttons
@@ -87,7 +104,7 @@ class GuiObjects:
         queen.pack(side=tk.LEFT)
 
         # close button
-        close = tk.Button(opt4, text="Close", command=prompt.destroy)
+        close = tk.Button(opt4, text="Close", command=self.prompt.destroy)
         close.pack()
 
         return None
@@ -119,7 +136,9 @@ class GuiObjects:
                             # check if the move path is valid
                             if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True:
                                 if self.game.can_be_promoted(self.from_spot, self.to_spot) or True:#remove once done
-                                    self.promotion_box()
+                                    flag = True# set flag
+                                    color = self.game.get_turn_color()
+                                    #self.promotion_box()
 
                                 look_up_name = self.game.get_piece_color(self.from_spot) + \
                                     self.game.get_piece_type(self.from_spot)
@@ -134,6 +153,16 @@ class GuiObjects:
 
                                 # flip the turn so the other color could move
                                 self.game.filp_trun()
+                                """
+                                if flag
+                                    queue of YesNo messageboxes 
+                                    while queue is not empty
+                                        do pop up
+                                        if no
+                                            dequeue
+                                        else
+                                            update board
+                                """
                     else:
                         # check if the color of the selected piece does not match the spot thus can take the piece
                         if self.game.get_piece_color(self.to_spot) is not self.game.get_piece_color(self.from_spot):
