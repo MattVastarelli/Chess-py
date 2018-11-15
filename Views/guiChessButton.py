@@ -47,6 +47,7 @@ class GuiObjects:
 
     # event listener to control the visual movement of a piece
     def event_click(self, row, col):
+        flag = False
         self.click_count += 1
 
         # remember the first click
@@ -71,9 +72,11 @@ class GuiObjects:
                         if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
                             # check if the move path is valid
                             if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True:
-                                if self.game.can_be_promoted(self.from_spot, self.to_spot) or True:#remove once done
+                                if self.game.can_be_promoted(self.from_spot, self.to_spot) is True:
                                     # state that the user can promote the pawn
                                     flag = True
+                                else:
+                                    flag = False
 
                                 look_up_name = self.game.get_piece_color(self.from_spot) + \
                                     self.game.get_piece_type(self.from_spot)
@@ -92,10 +95,9 @@ class GuiObjects:
                                     if promotion_choice is not None:
                                         # update the board
                                         name = self.game.get_turn_color() + promotion_choice
-                                        print(name)
-
                                         self.gui_board[row][col].configure(image=self.icons.get_icon(name),
                                                                            width="143", height="110")
+                                        self.game.promote_pawn(self.to_spot, name)
 
                                 # flip the turn so the other color could move
                                 self.game.filp_trun()
@@ -110,8 +112,11 @@ class GuiObjects:
                                         # take the piece
                                         self.game.take_piece(self.to_spot)
 
-                                        if self.game.can_be_promoted(self.from_spot, self.to_spot):
-                                            print()
+                                        if self.game.can_be_promoted(self.from_spot, self.to_spot) is True:
+                                            # state that the user can promote the pawn
+                                            flag = True
+                                        else:
+                                            flag = False
 
                                         look_up_name = self.game.get_piece_color(self.from_spot) + \
                                             self.game.get_piece_type(self.from_spot)
@@ -128,6 +133,16 @@ class GuiObjects:
                                                                                                        height="7")
                                         self.gui_board[row][col].configure(image=self.icons.get_icon(look_up_name),
                                                                            width="143", height="110")
+
+                                        if flag:
+                                            # ask the user for their choice
+                                            promotion_choice = self.promotion_mb()
+                                            if promotion_choice is not None:
+                                                # update the board
+                                                name = self.game.get_turn_color() + promotion_choice
+                                                self.gui_board[row][col].configure(image=self.icons.get_icon(name),
+                                                                                   width="143", height="110")
+                                                self.game.promote_pawn(self.to_spot, name)
 
                                         # flip the turn so the other color could move
                                         self.game.filp_trun()
