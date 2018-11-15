@@ -1,13 +1,12 @@
 from Controller import game
 from Views import guiIcons
-import tkinter as tk
+import tkinter.messagebox as mb
 
 
 class GuiObjects:
     # button class to shorten and simplify the main gui
     def __init__(self):
         self.game = game.Game()  # main controller class
-        self.prompt = ''
         self.click_count = 0
         self.from_spot = tuple()
         self.to_spot = tuple()
@@ -19,93 +18,30 @@ class GuiObjects:
         self.game.update_board(to_spot, self.game.get_piece(from_spot))
         self.game.update_board(from_spot, 0)
 
-    def look_up_name(self):
-        # look up the icon to place
-        look_up_name = self.game.get_piece_color(self.from_spot) + self.game.get_piece_type(self.from_spot)
-
-        return self.icons.get_icon(look_up_name)
-
-    def promotion(self, piece):
-        print(piece)
-
-        return None
-
-    def knight(self):
-        self.promotion("Knight")
-        self.prompt.destroy()
-        return None
-
-    def rook(self):
-        self.promotion("Rook")
-        self.prompt.destroy()
-        return None
-
-    def queen(self):
-        self.promotion("Queen")
-        self.prompt.destroy()
-        return None
-
-    def bishop(self):
-        self.promotion("Bishop")
-        self.prompt.destroy()
-        return None
-
-    def promotion_box(self):
-        # message box to select the piece added to the board after promotion
-        self.prompt = tk.Toplevel()
-        self.prompt.title("Promotion")
-
-        discrip = tk.Label(self.prompt, text="Select the piece you wish to promote to")
-        discrip.grid(row=0, column=0, padx=10, pady=2)
-
-        piece_frame = tk.Frame(self.prompt)
-        piece_frame.grid(row=1, column=0, padx=10, pady=10)
-
-        # frames for the various options
-        opt = tk.Frame(piece_frame)
-        opt.grid(row=1, column=0, padx=10, pady=5)
-
-        opt1 = tk.Frame(piece_frame)
-        opt1.grid(row=2, column=0, padx=10, pady=5)
-
-        opt2 = tk.Frame(piece_frame)
-        opt2.grid(row=3, column=0, padx=10, pady=5)
-
-        opt3 = tk.Frame(piece_frame)
-        opt3.grid(row=4, column=0, padx=10, pady=5)
-
-        opt4 = tk.Frame(piece_frame)
-        opt4.grid(row=5, column=0, pady=10)
-
-        # buttons to submit the promotion
-        b = tk.Button(opt, text="Promote", command=self.knight)
-        b.pack(side=tk.LEFT)
-
-        b1 = tk.Button(opt1, text="Promote", command=self.rook)
-        b1.grid(row=0, column=0)
-
-        b2 = tk.Button(opt2, text="Promote", command=self.bishop)
-        b2.pack(side=tk.LEFT)
-
-        b3 = tk.Button(opt3, text="Promote", command=self.queen)
-        b3.pack(side=tk.LEFT)
-
-        # labels for the buttons
-        knight = tk.Label(opt, text="Knight", anchor="nw")
-        knight.pack(side=tk.LEFT)
-
-        rook = tk.Label(opt1, text="Rook ", anchor="nw")
-        rook.grid(row=0, column=1, padx=3)
-
-        bishop = tk.Label(opt2, text="Bishop", anchor="nw")
-        bishop.pack(side=tk.LEFT)
-
-        queen = tk.Label(opt3, text="Queen", anchor="nw")
-        queen.pack(side=tk.LEFT)
-
-        # close button
-        close = tk.Button(opt4, text="Close", command=self.prompt.destroy)
-        close.pack()
+    def promotion_mb(self):
+        # prompt to for the user to select the piece they with to promote the pawn to
+        while True:
+            choice = mb.askquestion("Promote Pawn?", "Knight")
+            if choice == 'yes':
+                piece = "Knight"
+                return piece
+            choice = mb.askquestion("Promote Pawn?", "Queen")
+            if choice == 'yes':
+                piece = "Queen"
+                return piece
+            choice = mb.askquestion("Promote Pawn?", "Bishop")
+            if choice == 'yes':
+                piece = "Bishop"
+                return piece
+            choice = mb.askquestion("Promote Pawn?", "Rook")
+            if choice == 'yes':
+                piece = "Rook"
+                return piece
+            choice = mb.askquestion("See choices again?")
+            if choice == 'yes':
+                continue
+            else:
+                break
 
         return None
 
@@ -136,9 +72,8 @@ class GuiObjects:
                             # check if the move path is valid
                             if self.game.check_valid_move_path(self.from_spot, self.to_spot) is True:
                                 if self.game.can_be_promoted(self.from_spot, self.to_spot) or True:#remove once done
-                                    flag = True# set flag
-                                    color = self.game.get_turn_color()
-                                    #self.promotion_box()
+                                    # state that the user can promote the pawn
+                                    flag = True
 
                                 look_up_name = self.game.get_piece_color(self.from_spot) + \
                                     self.game.get_piece_type(self.from_spot)
@@ -151,18 +86,19 @@ class GuiObjects:
                                 self.gui_board[row][col].configure(image=self.icons.get_icon(look_up_name),
                                                                    width="143", height="110")
 
+                                if flag:
+                                    # ask the user for their choice
+                                    promotion_choice = self.promotion_mb()
+                                    if promotion_choice is not None:
+                                        # update the board
+                                        name = self.game.get_turn_color() + promotion_choice
+                                        print(name)
+
+                                        self.gui_board[row][col].configure(image=self.icons.get_icon(name),
+                                                                           width="143", height="110")
+
                                 # flip the turn so the other color could move
                                 self.game.filp_trun()
-                                """
-                                if flag
-                                    queue of YesNo messageboxes 
-                                    while queue is not empty
-                                        do pop up
-                                        if no
-                                            dequeue
-                                        else
-                                            update board
-                                """
                     else:
                         # check if the color of the selected piece does not match the spot thus can take the piece
                         if self.game.get_piece_color(self.to_spot) is not self.game.get_piece_color(self.from_spot):
