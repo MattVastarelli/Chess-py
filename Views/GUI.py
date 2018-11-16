@@ -29,7 +29,7 @@ class SplashScreen:
         gui = guiBoard.GuiBoard()
         gui.run()
 
-    def resume_game(self):
+    def resume_game(self, dict):
         # read from the save file and start the new game
         
         return None

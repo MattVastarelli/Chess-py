@@ -47,6 +47,10 @@ class GuiBoard:
         esgui = saveGamehelper.SaveToFile(self.gui_objects.game)
         esgui.run_save()
 
+    def build_saved_board(self, dict):
+        # the code to build the board after it is read in from the file
+        return None
+
     # build the chess board
     def build_chess_board(self, parent):
         outer = tk.Frame(parent, border=5, relief='sunken')
