@@ -159,7 +159,6 @@ class Game:
             else:  # is pawn
                 return True
 
-
     def pawn_capture(self, from_spot, to_spot):
         piece = self.board.get_spot(from_spot[0], from_spot[1])
         print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
@@ -174,6 +173,12 @@ class Game:
                 return True
             else:
                 return False
+
+    def promote_pawn(self, spot, piece):
+        # promote a pawn at the given spot by replacing it with the chosen piece
+        self.board.promote(spot[0], spot[1], piece)
+
+        return None
 
     def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid

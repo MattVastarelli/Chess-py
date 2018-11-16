@@ -100,10 +100,28 @@ class Board:
         # return the piece at the given spot
         return self.game_board[x][y]
 
+    def promote(self, x, y, piece):
+        # set a given spot to a chosen piece, used for promotion
+        black_rook = chessPiece.Rook('Black', '3')
+        black_knight = chessPiece.Knight('Black', '3')
+        black_queen = chessPiece.Queen('Black', '2')
+        black_bishop = chessPiece.Bishop('Black', '3')
+
+        white_rook = chessPiece.Rook('White', '3')
+        white_knight = chessPiece.Knight('White', '3')
+        white_queen = chessPiece.Queen('White', '2')
+        white_bishop = chessPiece.Bishop('White', '3')
+
+        # dictionary to look up the correct object
+        extra_pieces = {
+            "WhiteKnight": white_knight, "WhiteRook": white_rook,
+            "WhiteQueen": white_queen, "WhiteBishop": white_bishop,
+            "BlackKnight": black_knight, "BlackRook": black_rook,
+            "BlackQueen": black_queen, "BlackBishop": black_bishop,
+        }
+
+        # place the promotion choice on the board
+        self.game_board[x][y] = extra_pieces[piece]
+
     def set_spot(self, x, y, piece):
         self.game_board[x][y] = piece
-
-    def __repr__(self):
-        return str(self.game_board[x][y])
-
-
