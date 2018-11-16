@@ -36,14 +36,18 @@ class saveToFile:
         text1 += ".txt"
         fn = open(text1, 'w')
         checkforpiece = game.Game()
+        currentstate = board.Board()      
         x = 0
         y = 0
         while y <= 7:
             while x <= 7:
                 tuple1 = (x,y)
+                test1 = currentstate.get_spot(x,y)
+                print(test1)
                 x+=1
                 occupied = checkforpiece.is_spot_occupied(tuple1)
                 if occupied == True:
+                    print(occupied, tuple1)
                     piece = checkforpiece.get_piece_type(tuple1)
                     color = checkforpiece.get_piece_color(tuple1)
                     tofile = str(tuple1)

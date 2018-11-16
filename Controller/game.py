@@ -70,8 +70,10 @@ class Game:
     def spot_is_zero(self, spot):
         spot = self.board.get_spot(spot[0], spot[1])
         if spot is 0:
+            print(spot)
             return True
         else:
+            print(spot)
             return False
 
     def filp_trun(self):
@@ -90,7 +92,6 @@ class Game:
     def is_spot_occupied(self, loc):
         # check if there is a piece on a spot
         spot = self.board.get_spot(loc[0], loc[1])
-
         if spot is 0:
             return False
         else:
