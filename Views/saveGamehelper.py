@@ -13,9 +13,6 @@ class SaveToFile:
         self.text_box = ''
         self.game = game_instance
 
-    def function_tabs(self,):
-        mb.showinfo("Test")
-
     def __repr__(self):
         return str(self.filename)
 

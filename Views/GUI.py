@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.messagebox as mb
 from PIL import Image, ImageTk
 from Views import guiBoard
+from Views import loadGame
 
 
 class SplashScreen:
@@ -58,8 +59,12 @@ class SplashScreen:
         
         return outer
 
+    def load_game (self,):
+        lsgui = loadGame.LoadFromFile()
+        lsgui.run_load()
+
     def show_splash_screen(self):
-        self.event_resume = self.function_tabs
+        self.resume_game = self.load_game
         self.event_help = self.function_tabs
         self.event_about = self.about_button_action
 
