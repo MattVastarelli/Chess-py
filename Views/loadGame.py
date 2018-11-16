@@ -1,32 +1,33 @@
 from tkinter import *
 import tkinter.messagebox as mb
 
-class LoadFromFile():
-    def __init__ (self):
+
+class LoadFromFile:
+    def __init__(self):
         self.loadGame = Tk()
         self.loadGame.geometry("200x115")
-        self.loadGame.title ("Load Game")
-        self.loadGame.resizable (0,0)
+        self.loadGame.title("Load Game")
+        self.loadGame.resizable(0, 0)
         self.load_save = ''
         self.event_cancel = ''
         self.text_box = ''
 
-    def build_load_game (self, parent):
+    def build_load_game(self, parent):
         frame1 = Frame(self.loadGame)
-        frame1.pack(expand = True)
+        frame1.pack(expand=True)
 
         for i in range(3):
             if i == 0:
                 self.text_box = Entry(frame1)
                 self.text_box.pack()
             if i == 1:
-                load_button = Button(frame1, text = "Load Game", width = "9", height = "1", command=self.load_save)
+                load_button = Button(frame1, text="Load Game", width="9", height="1", command=self.load_save)
                 load_button.pack(side=LEFT)
             if i == 2:
-                cancel_button = Button(frame1, text = "Cancel", width = "9", height = "1", command=self.event_cancel)
+                cancel_button = Button(frame1, text="Cancel", width="9", height="1", command=self.event_cancel)
                 cancel_button.pack(side=RIGHT)
 
-    def loadFromFile (self):
+    def loadFromFile(self):
         text1 = self.text_box.get()
         text1 += ".txt"
         try:
@@ -45,21 +46,22 @@ class LoadFromFile():
                     elif c.isdigit() and x == -1:
                         x = int(c)
                     elif x != -1 and y != -1:
-                        numberholder+=str(y)
-                        numberholder+=str(x)
+                        numberholder += str(y)
+                        numberholder += str(x)
                         x = -1
                         y = -1
                     elif c == '@' and counter == 0:
-                        counter +=1
-                    elif c!= '@' and counter == 1 and c.isalpha():
-                        color+=c
+                        counter += 1
+                    elif c != '@' and counter == 1 and c.isalpha():
+                        color += c
                     elif c == '@' and counter == 1:
-                        counter +=1
-                    elif c!= '@' and counter == 2 and c.isalpha():
-                        piece+=c
-                print("Test: ",numberholder)
-                print("Test: ",color)
-                print("Test: ",piece)
+                        counter += 1
+                    elif c != '@' and counter == 2 and c.isalpha():
+                        piece += c
+
+                print("Test: ", numberholder)
+                print("Test: ", color)
+                print("Test: ", piece)
                 piece = ''
                 color = ''
                 counter = 0
@@ -67,8 +69,6 @@ class LoadFromFile():
                 if y != -1 or x != -1:
                     y = -1
                     x = -1
-
-                        
             self.loadGame.destroy()
         except FileNotFoundError:
             mb.showinfo("ERROR", "File Does Not Exist!")
@@ -78,7 +78,6 @@ class LoadFromFile():
         self.load_save = self.loadFromFile
         self.event_cancel = self.loadGame.destroy
         lg = self.build_load_game(self.loadGame)
-
 
         return None
 
