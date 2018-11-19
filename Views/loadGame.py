@@ -45,8 +45,8 @@ class LoadFromFile:
                 counter = 0
                 color = ''
                 piece = ''
-                numberholder = ''
-                test=[line.strip() for line in open(text1, 'r')]
+                number_holder = ''
+                test = [line.strip() for line in open(text1, 'r')]
                 for line in test:
                     print(line)
                     if line == "False":
@@ -58,8 +58,8 @@ class LoadFromFile:
                             elif c.isdigit() and x == -1:
                                 x = int(c)
                             elif x != -1 and y != -1:
-                                numberholder += str(x)
-                                numberholder += str(y)
+                                number_holder += str(x)
+                                number_holder += str(y)
                                 x = -1
                                 y = -1
                             elif c == '@' and counter == 0:
@@ -72,11 +72,11 @@ class LoadFromFile:
                                 piece += c
 
                         totPiece = color+piece
-                        self.dictofpieces[numberholder] = totPiece
+                        self.dictofpieces[number_holder] = totPiece
                         piece = ''
                         color = ''
                         counter = 0
-                        numberholder = ''
+                        number_holder = ''
                         if y != -1 or x != -1:
                             y = -1
                             x = -1
@@ -91,7 +91,7 @@ class LoadFromFile:
     def show_load_game(self):
         self.load_save = self.load_from_file
         self.event_cancel = self.loadGame.destroy
-        lg = self.build_load_game(self.loadGame)
+        self.build_load_game(self.loadGame)
 
         return None
 

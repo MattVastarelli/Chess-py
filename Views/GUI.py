@@ -54,6 +54,14 @@ class SplashScreen:
 
         return None
 
+    def load_game(self,):
+        # instantiate the class with a reference to the main controller class
+        lsgui = loadGame.LoadFromFile(self.gui_objects.game)
+        lsgui.run_load()
+        self.game = str(lsgui)
+        lsgui.destroy_windows()
+        self.resume_game()
+
     def build_splash_screen(self, parent):
         backpic = tk.Label(self.welcome, image=self.tkphoto1)
         backpic.place(x=0, y=0, relwidth=1, relheight=1)
@@ -78,13 +86,6 @@ class SplashScreen:
                b5.pack()
         
         return outer
-
-    def load_game(self,):
-        lsgui = loadGame.LoadFromFile(self.gui_objects.game)
-        lsgui.run_load()
-        self.game = str(lsgui)
-        lsgui.destroy_windows()
-        self.resume_game()
 
     def show_splash_screen(self):
         self.event_help = self.function_tabs

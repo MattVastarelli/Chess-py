@@ -1,4 +1,6 @@
-# TODO have to handle castling
+# Chess Game
+# Authors: Matthew Vastarelli, Evan Perry
+# Github Repo: https://github.com/MattVastarelli/Chess-py
 
 
 def main():

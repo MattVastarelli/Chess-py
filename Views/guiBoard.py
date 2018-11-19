@@ -6,7 +6,6 @@ from Views import saveGamehelper
 from Views import newgamehelper
 
 
-
 class GuiBoard:
     # main GUI class to build the gui and launch call the controller methods
     def __init__(self):
@@ -123,7 +122,7 @@ class GuiBoard:
         return outer
 
     def new_game(self):
-        nggui = newgamehelper.newgame(self.top)
+        nggui = newgamehelper.NewGame(self.top)
         nggui.run()
 
     def show_board(self):
@@ -146,12 +145,12 @@ class GuiBoard:
 
 
 class LoadGuiBoard(GuiBoard):
-    def build_chess_board(self, parent, dictofPieces = None):
+    def build_chess_board(self, parent, dictofPieces=None):#in here lies the issue where the moved pieces are not movable likely becuse they do not have the objects at that spot
         outer = tk.Frame(parent, border=5, relief='sunken')
         inner = tk.Frame(outer)
         inner.pack()
         clr = True
-        piecetoplace = False
+        piece_to_place = False
 
         row_num = 0
         # This for loop builds the board while also alternating sandybrown and saddlebrown squares
@@ -165,17 +164,17 @@ class LoadGuiBoard(GuiBoard):
                     compTuple = (col, row_num)
                     for key in dictofPieces.keys():
                         if compTuple == key:
-                            piecetoplace = True
+                            piece_to_place = True
                             break
                         else:
-                            piecetoplace = False
-                    if piecetoplace == False:
+                            piece_to_place = False
+                    if piece_to_place == False:
                         cell = tk.Button(inner, text="", width="20", height="7", background="sandybrown",
                                             command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
                         cell.grid(row=row, column=col)
                         self.gui_objects.gui_board[row][col] = cell
-                    elif piecetoplace == True:
+                    elif piece_to_place:
                         cell = tk.Button(inner, text="", width="143", height="110", background="sandybrown",
                                             image=self.icons.get_icon(dictofPieces.get(compTuple)),
                                             command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
@@ -187,17 +186,17 @@ class LoadGuiBoard(GuiBoard):
                     compTuple = (col, row_num)
                     for key in dictofPieces.keys():
                         if compTuple == key:
-                            piecetoplace = True
+                            piece_to_place = True
                             break
                         else:
-                            piecetoplace = False
-                    if piecetoplace == False:
+                            piece_to_place = False
+                    if piece_to_place == False:
                         cell = tk.Button(inner, text=" ", width="20", height="7", background="saddlebrown",
-                                            command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+                                         command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
                         cell.grid(row=row, column=col)
                         self.gui_objects.gui_board[row][col] = cell
-                    elif piecetoplace == True:
+                    elif piece_to_place:
                             cell = tk.Button(inner, text=" ", width="143", height="110", background="saddlebrown",
                                                 image=self.icons.get_icon(dictofPieces.get(compTuple)),
                                                 command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
@@ -209,8 +208,7 @@ class LoadGuiBoard(GuiBoard):
 
         return outer
 
-
-    def show_board(self, dictofPieces = None):
+    def show_board(self, dictofPieces=None):
         self.event_new = self.function_tabs
         self.event_save = self.eventSave
         self.event_exit = self.top.destroy
@@ -224,8 +222,7 @@ class LoadGuiBoard(GuiBoard):
 
         return None
 
-
-    def run(self, dictofPieces = None):
+    def run(self, dictofPieces=None):
         self.show_board(dictofPieces)
         tk.mainloop()
 

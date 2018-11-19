@@ -192,6 +192,7 @@ class Game:
         elif piece.get_name() is "Pawn":
             # handle the pawn case
             if piece.is_first_move():
+                # first move
                 if piece.get_color() is "White":
                     if move in [(-2, 0), (-1, 0)]:
                         piece.set_first_move(False)
@@ -205,6 +206,7 @@ class Game:
                     else:
                         return False
             else:
+                # not first move
                 if piece.get_color() is "White":
                     if move == (-1, 0):
                         return True
