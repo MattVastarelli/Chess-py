@@ -39,7 +39,7 @@ class SplashScreen:
         tempPiece = ''
         for c in self.game:
             if c.isdigit():
-                tempNum+=c
+                tempNum += c
             elif c.isalpha():
                 tempPiece += c
             elif c == ',' and tempPiece != '':
@@ -47,12 +47,11 @@ class SplashScreen:
                 dictofPieces[tempTuple] = tempPiece
                 tempNum = ''
                 tempPiece = ''
+
         self.welcome.destroy()
         gui = guiBoard.LoadGuiBoard()
         gui.run(dictofPieces)
 
-
-        
         return None
 
     def build_splash_screen(self, parent):
@@ -80,11 +79,11 @@ class SplashScreen:
         
         return outer
 
-    def load_game (self,):
+    def load_game(self,):
         lsgui = loadGame.LoadFromFile(self.gui_objects.game)
         lsgui.run_load()
         self.game = str(lsgui)
-        lsgui.destroyWindows()
+        lsgui.destroy_windows()
         self.resume_game()
 
     def show_splash_screen(self):

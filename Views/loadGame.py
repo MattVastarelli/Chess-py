@@ -2,7 +2,7 @@ from tkinter import *
 import tkinter.messagebox as mb
 
 
-class LoadFromFile():
+class LoadFromFile:
     def __init__(self, game_instance):
         self.loadGame = Tk()
         self.loadGame.geometry("200x115")
@@ -32,7 +32,7 @@ class LoadFromFile():
                 cancel_button = Button(frame1, text="Cancel", width="9", height="1", command=self.event_cancel)
                 cancel_button.pack(side=RIGHT)
 
-    def loadFromFile(self):
+    def load_from_file(self):
         text1 = self.text_box.get()
         if text1 == '':
             mb.showinfo("ERROR!", "File name required!")
@@ -85,11 +85,11 @@ class LoadFromFile():
                 mb.showinfo("ERROR", "File Does Not Exist!")
                 self.loadGame.destroy()
 
-    def destroyWindows (self):
+    def destroy_windows(self):
         self.loadGame.destroy()
 
     def show_load_game(self):
-        self.load_save = self.loadFromFile
+        self.load_save = self.load_from_file
         self.event_cancel = self.loadGame.destroy
         lg = self.build_load_game(self.loadGame)
 
