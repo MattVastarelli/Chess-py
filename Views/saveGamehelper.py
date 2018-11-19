@@ -33,35 +33,40 @@ class SaveToFile:
 
     def readout_file(self):
         text1 = self.text_box.get()
-        text1 += ".txt"
-        fn = open(text1, 'w')
-        x = 0
-        y = 0
-        while y <= 7:
-            while x <= 7:
-                tuple1 = (x, y)
-                x += 1
-                occupied = self.game.is_spot_occupied(tuple1)
-
-                if occupied:
-                    piece = self.game.get_piece_type(tuple1)
-                    color = self.game.get_piece_color(tuple1)
-                    tofile = str(tuple1)
-                    tofile += '@'
-                    color = str(color)
-                    tofile += color
-                    tofile += '@'
-                    piece = str(piece)
-                    tofile += piece
-                    fn.write(tofile)
-                    fn.write('\n')
-                    
-                elif not occupied:
-                    continue
+        if text1 == '':
+            mb.showinfo("ERROR!", "You must type in a name!")
+            self.saveGame.destroy()
+        else:
+            text1 += ".txt"
+            fn = open(text1, 'w')
             x = 0
-            y += 1
-        fn.close()
-        self.saveGame.destroy()
+            y = 0
+            while y <= 7:
+                while x <= 7:
+                    tuple1 = (x, y)
+                    x += 1
+                    occupied = self.game.is_spot_occupied(tuple1)
+
+                    if occupied:
+                        piece = self.game.get_piece_type(tuple1)
+                        color = self.game.get_piece_color(tuple1)
+                        tofile = str(tuple1)
+                        tofile += '@'
+                        color = str(color)
+                        tofile += color
+                        tofile += '@'
+                        piece = str(piece)
+                        tofile += piece
+                        fn.write(tofile)
+                        fn.write('\n')
+                    
+                    elif not occupied:
+                        continue
+                x = 0
+                y += 1
+            fn.write('\n')
+            fn.close()
+            self.saveGame.destroy()
 
     def show_save_game(self):
         self.event_save = self.readout_file

@@ -17,6 +17,7 @@ class SplashScreen:
         self.event_help = ''
         self.event_about = ''
         self.event_exit = ''
+        self.game = ''
          
     def function_tabs(self,):
         mb.showinfo("Test")
@@ -29,8 +30,26 @@ class SplashScreen:
         gui = guiBoard.GuiBoard()
         gui.run()
 
-    def resume_game(self, dict):
+    def resume_game(self):
         # read from the save file and start the new game
+        dictofPieces = dict()
+        tempNum = ''
+        tempPiece = ''
+        for c in self.game:
+            if c.isdigit():
+                tempNum+=c
+            elif c.isalpha():
+                tempPiece += c
+            elif c == ',' and tempPiece != '':
+                tempTuple = (int(tempNum[0]), int(tempNum[1]))
+                dictofPieces[tempTuple] = tempPiece
+                tempNum = ''
+                tempPiece = ''
+        self.welcome.destroy()
+        gui = guiBoard.LoadGuiBoard()
+        gui.run(dictofPieces)
+
+
         
         return None
 
@@ -45,7 +64,7 @@ class SplashScreen:
                b1 = tk.Button(inner, text="New Game", width="35", height="7", command=self.start_game)
                b1.pack()
             if i == 1:
-               b2 = tk.Button(inner, text="Resume Game", width="35", height="7", command=self.resume_game)
+               b2 = tk.Button(inner, text="Resume Game", width="35", height="7", command=self.load_game)
                b2.pack()
             if i == 2:
                b3 = tk.Button(inner, text="Help", width="35", height="7", command=self.event_help)
@@ -62,9 +81,11 @@ class SplashScreen:
     def load_game (self,):
         lsgui = loadGame.LoadFromFile()
         lsgui.run_load()
+        self.game = str(lsgui)
+        lsgui.destroyWindows()
+        self.resume_game()
 
     def show_splash_screen(self):
-        self.resume_game = self.load_game
         self.event_help = self.function_tabs
         self.event_about = self.about_button_action
 

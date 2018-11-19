@@ -2,7 +2,7 @@ from tkinter import *
 import tkinter.messagebox as mb
 
 
-class LoadFromFile:
+class LoadFromFile():
     def __init__(self):
         self.loadGame = Tk()
         self.loadGame.geometry("200x115")
@@ -11,6 +11,10 @@ class LoadFromFile:
         self.load_save = ''
         self.event_cancel = ''
         self.text_box = ''
+        self.dictofpieces = dict()
+
+    def __repr__(self):
+        return str(self.dictofpieces)
 
     def build_load_game(self, parent):
         frame1 = Frame(self.loadGame)
@@ -29,50 +33,55 @@ class LoadFromFile:
 
     def loadFromFile(self):
         text1 = self.text_box.get()
-        text1 += ".txt"
-        try:
-            x = -1
-            y = -1
-            counter = 0
-            color = ''
-            piece = ''
-            numberholder = ''
-            test=[line.strip() for line in open(text1, 'r')]
-            for line in test:
-                print(line)
-                for c in line:
-                    if c.isdigit() and y == -1:
-                        y = int(c)
-                    elif c.isdigit() and x == -1:
-                        x = int(c)
-                    elif x != -1 and y != -1:
-                        numberholder += str(y)
-                        numberholder += str(x)
-                        x = -1
-                        y = -1
-                    elif c == '@' and counter == 0:
-                        counter += 1
-                    elif c != '@' and counter == 1 and c.isalpha():
-                        color += c
-                    elif c == '@' and counter == 1:
-                        counter += 1
-                    elif c != '@' and counter == 2 and c.isalpha():
-                        piece += c
-
-                print("Test: ", numberholder)
-                print("Test: ", color)
-                print("Test: ", piece)
-                piece = ''
-                color = ''
+        if text1 == '':
+            mb.showinfo("ERROR!", "File name required!")
+            self.loadGame.destroy()
+        else:
+            text1 += ".txt"
+            try:
+                x = -1
+                y = -1
                 counter = 0
+                color = ''
+                piece = ''
                 numberholder = ''
-                if y != -1 or x != -1:
-                    y = -1
-                    x = -1
-            self.loadGame.destroy()
-        except FileNotFoundError:
-            mb.showinfo("ERROR", "File Does Not Exist!")
-            self.loadGame.destroy()
+                test=[line.strip() for line in open(text1, 'r')]
+                for line in test:
+                    for c in line:
+                        if c.isdigit() and y == -1:
+                            y = int(c)
+                        elif c.isdigit() and x == -1:
+                            x = int(c)
+                        elif x != -1 and y != -1:
+                            numberholder += str(x)
+                            numberholder += str(y)
+                            x = -1
+                            y = -1
+                        elif c == '@' and counter == 0:
+                            counter += 1
+                        elif c != '@' and counter == 1 and c.isalpha():
+                            color += c
+                        elif c == '@' and counter == 1:
+                            counter += 1
+                        elif c != '@' and counter == 2 and c.isalpha():
+                            piece += c
+
+                    totPiece = color+piece
+                    self.dictofpieces[numberholder] = totPiece
+                    piece = ''
+                    color = ''
+                    counter = 0
+                    numberholder = ''
+                    if y != -1 or x != -1:
+                        y = -1
+                        x = -1
+                self.loadGame.quit()
+            except FileNotFoundError:
+                mb.showinfo("ERROR", "File Does Not Exist!")
+                self.loadGame.destroy()
+
+    def destroyWindows (self):
+        self.loadGame.destroy()
 
     def show_load_game(self):
         self.load_save = self.loadFromFile

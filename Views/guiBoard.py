@@ -5,6 +5,7 @@ from Views import guiIcons
 from Views import saveGamehelper
 
 
+
 class GuiBoard:
     # main GUI class to build the gui and launch call the controller methods
     def __init__(self):
@@ -137,3 +138,89 @@ class GuiBoard:
     def run(self):
         self.show_board()
         tk.mainloop()
+
+
+class LoadGuiBoard(GuiBoard):
+    def build_chess_board(self, parent, dictofPieces = None):
+        outer = tk.Frame(parent, border=5, relief='sunken')
+        inner = tk.Frame(outer)
+        inner.pack()
+        clr = True
+        piecetoplace = False
+
+        row_num = 0
+        # This for loop builds the board while also alternating sandybrown and saddlebrown squares
+        for row in range(8):
+            if row % 2 == 0:
+                clr = True
+            if row % 2 != 0:
+                clr = False
+            for col in range(8):
+                if clr is True:
+                    compTuple = (col, row_num)
+                    for key in dictofPieces.keys():
+                        if compTuple == key:
+                            piecetoplace = True
+                            break
+                        else:
+                            piecetoplace = False
+                    if piecetoplace == False:
+                        cell = tk.Button(inner, text="", width="20", height="7", background="sandybrown",
+                                            command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+
+                        cell.grid(row=row, column=col)
+                        self.gui_objects.gui_board[row][col] = cell
+                    elif piecetoplace == True:
+                        cell = tk.Button(inner, text="", width="143", height="110", background="sandybrown",
+                                            image=self.icons.get_icon(dictofPieces.get(compTuple)),
+                                            command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+
+                        cell.grid(row=row, column=col)
+                        self.gui_objects.gui_board[row][col] = cell
+                    clr = False
+                elif clr is False:
+                    compTuple = (col, row_num)
+                    for key in dictofPieces.keys():
+                        if compTuple == key:
+                            piecetoplace = True
+                            break
+                        else:
+                            piecetoplace = False
+                    if piecetoplace == False:
+                        cell = tk.Button(inner, text=" ", width="20", height="7", background="saddlebrown",
+                                            command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+
+                        cell.grid(row=row, column=col)
+                        self.gui_objects.gui_board[row][col] = cell
+                    elif piecetoplace == True:
+                            cell = tk.Button(inner, text=" ", width="143", height="110", background="saddlebrown",
+                                                image=self.icons.get_icon(dictofPieces.get(compTuple)),
+                                                command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+
+                            cell.grid(row=row, column=col)
+                            self.gui_objects.gui_board[row][col] = cell
+                    clr = True
+            row_num += 1
+
+        return outer
+
+
+    def show_board(self, dictofPieces = None):
+        self.event_new = self.function_tabs
+        self.event_save = self.eventSave
+        self.event_exit = self.top.destroy
+        self.event_help = self.function_tabs
+        self.event_about = self.function_tabs
+
+        menubar = self.build_menu(self.top)
+        self.top["menu"] = menubar
+        ch_board = self.build_chess_board(self.top, dictofPieces)
+        ch_board.pack()
+
+        return None
+
+
+    def run(self, dictofPieces = None):
+        self.show_board(dictofPieces)
+        tk.mainloop()
+
