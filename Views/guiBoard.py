@@ -121,8 +121,13 @@ class GuiBoard:
             row_num += 1
         return outer
 
+    def new_game(self):
+        self.top.destroy()
+        self.newrun = GuiBoard()
+        self.newrun.run()
+
     def show_board(self):
-        self.event_new = self.function_tabs
+        self.event_new = self.new_game
         self.event_save = self.eventSave
         self.event_exit = self.top.destroy
         self.event_help = self.function_tabs
