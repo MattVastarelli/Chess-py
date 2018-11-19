@@ -16,9 +16,6 @@ class Game:
         # return the piece at a given spot
         return self.board.get_spot(spot[0], spot[1])
 
-    def getWhiteTurn(self):
-        return self.white_turn
-
     def is_game_done(self, spot):
         # checks to see if a game is over and who won
         if self.get_piece_type(spot) is "King":
@@ -36,6 +33,14 @@ class Game:
             return "White"
         else:
             return "Black"
+
+    def set_turn_color(self, color):
+        if color is "White":
+            self.white_turn = True
+            self.black_turn = False
+        elif color is "Black":
+            self.white_turn = False
+            self.black_turn = True
 
     def update_board(self, spot, piece):
         # update the board with the move
@@ -177,9 +182,9 @@ class Game:
             else:
                 return False
 
-    def promote_pawn(self, spot, piece):
+    def promote_and_resume(self, spot, piece):
         # promote a pawn at the given spot by replacing it with the chosen piece
-        self.board.promote(spot[0], spot[1], piece)
+        self.board.promote_and_resume(spot[0], spot[1], piece)
 
         return None
 

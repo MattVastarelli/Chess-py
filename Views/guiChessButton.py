@@ -18,6 +18,9 @@ class GuiObjects:
         self.game.update_board(to_spot, self.game.get_piece(from_spot))
         self.game.update_board(from_spot, 0)
 
+    def get_game(self):
+        return self.game
+
     def promotion_mb(self):
         # prompt to for the user to select the piece they with to promote the pawn to
         while True:
@@ -37,7 +40,7 @@ class GuiObjects:
             if choice == 'yes':
                 piece = "Rook"
                 return piece
-            choice = mb.askquestion("See choices again?")
+            choice = mb.askquestion("Promote Pawn?", "See choices again?")
             if choice == 'yes':
                 continue
             else:
@@ -97,7 +100,7 @@ class GuiObjects:
                                         name = self.game.get_turn_color() + promotion_choice
                                         self.gui_board[row][col].configure(image=self.icons.get_icon(name),
                                                                            width="143", height="110")
-                                        self.game.promote_pawn(self.to_spot, name)
+                                        self.game.promote_and_resume(self.to_spot, name)
 
                                 # flip the turn so the other color could move
                                 self.game.filp_trun()
@@ -142,7 +145,7 @@ class GuiObjects:
                                                 name = self.game.get_turn_color() + promotion_choice
                                                 self.gui_board[row][col].configure(image=self.icons.get_icon(name),
                                                                                    width="143", height="110")
-                                                self.game.promote_pawn(self.to_spot, name)
+                                                self.game.promote_and_resume(self.to_spot, name)
 
                                         # flip the turn so the other color could move
                                         self.game.filp_trun()

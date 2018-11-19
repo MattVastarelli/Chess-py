@@ -145,7 +145,7 @@ class GuiBoard:
 
 
 class LoadGuiBoard(GuiBoard):
-    def build_chess_board(self, parent, dictofPieces=None):#in here lies the issue where the moved pieces are not movable likely becuse they do not have the objects at that spot
+    def build_chess_board(self, parent, dictofPieces=None):
         outer = tk.Frame(parent, border=5, relief='sunken')
         inner = tk.Frame(outer)
         inner.pack()
@@ -168,19 +168,26 @@ class LoadGuiBoard(GuiBoard):
                             break
                         else:
                             piece_to_place = False
-                    if piece_to_place == False:
+
+                    if piece_to_place is False:
+                        # don't place the icon on the board
                         cell = tk.Button(inner, text="", width="20", height="7", background="sandybrown",
                                             command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
                         cell.grid(row=row, column=col)
                         self.gui_objects.gui_board[row][col] = cell
                     elif piece_to_place:
+                        # place the icon on the board
                         cell = tk.Button(inner, text="", width="143", height="110", background="sandybrown",
                                             image=self.icons.get_icon(dictofPieces.get(compTuple)),
                                             command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
                         cell.grid(row=row, column=col)
                         self.gui_objects.gui_board[row][col] = cell
+                        # initiate the correct piece on the given spot in the board matrix
+                        game = self.gui_objects.get_game()
+                        spot = (row, col)
+                        game.promote_and_resume(spot, dictofPieces.get(compTuple))
                     clr = False
                 elif clr is False:
                     compTuple = (col, row_num)
@@ -190,19 +197,25 @@ class LoadGuiBoard(GuiBoard):
                             break
                         else:
                             piece_to_place = False
-                    if piece_to_place == False:
+                    if piece_to_place is False:
+                        # don't place the icon on the board
                         cell = tk.Button(inner, text=" ", width="20", height="7", background="saddlebrown",
                                          command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
                         cell.grid(row=row, column=col)
                         self.gui_objects.gui_board[row][col] = cell
                     elif piece_to_place:
-                            cell = tk.Button(inner, text=" ", width="143", height="110", background="saddlebrown",
-                                                image=self.icons.get_icon(dictofPieces.get(compTuple)),
-                                                command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
+                        # place the icon on the board
+                        cell = tk.Button(inner, text=" ", width="143", height="110", background="saddlebrown",
+                                         image=self.icons.get_icon(dictofPieces.get(compTuple)),
+                                         command=lambda r=row, c=col: self.gui_objects.event_click(r, c))
 
-                            cell.grid(row=row, column=col)
-                            self.gui_objects.gui_board[row][col] = cell
+                        cell.grid(row=row, column=col)
+                        self.gui_objects.gui_board[row][col] = cell
+                        # initiate the correct piece on the given spot in the board matrix
+                        game = self.gui_objects.get_game()
+                        spot = (row, col)
+                        game.promote_and_resume(spot, dictofPieces.get(compTuple))
                     clr = True
             row_num += 1
 
