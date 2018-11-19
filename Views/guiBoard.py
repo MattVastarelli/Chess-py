@@ -3,6 +3,7 @@ import tkinter.messagebox as mb
 from Views import guiChessButton
 from Views import guiIcons
 from Views import saveGamehelper
+from Views import newgamehelper
 
 
 
@@ -122,9 +123,8 @@ class GuiBoard:
         return outer
 
     def new_game(self):
-        self.top.destroy()
-        self.newrun = GuiBoard()
-        self.newrun.run()
+        nggui = newgamehelper.newgame(self.top)
+        nggui.run()
 
     def show_board(self):
         self.event_new = self.new_game

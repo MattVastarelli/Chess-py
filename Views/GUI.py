@@ -3,6 +3,7 @@ import tkinter.messagebox as mb
 from PIL import Image, ImageTk
 from Views import guiBoard
 from Views import loadGame
+from Views import guiChessButton
 
 
 class SplashScreen:
@@ -18,6 +19,7 @@ class SplashScreen:
         self.event_about = ''
         self.event_exit = ''
         self.game = ''
+        self.gui_objects = guiChessButton.GuiObjects()
          
     def function_tabs(self,):
         mb.showinfo("Test")
@@ -79,7 +81,7 @@ class SplashScreen:
         return outer
 
     def load_game (self,):
-        lsgui = loadGame.LoadFromFile()
+        lsgui = loadGame.LoadFromFile(self.gui_objects.game)
         lsgui.run_load()
         self.game = str(lsgui)
         lsgui.destroyWindows()

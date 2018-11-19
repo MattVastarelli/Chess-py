@@ -16,6 +16,9 @@ class Game:
         # return the piece at a given spot
         return self.board.get_spot(spot[0], spot[1])
 
+    def getWhiteTurn(self):
+        return self.white_turn
+
     def is_game_done(self, spot):
         # checks to see if a game is over and who won
         if self.get_piece_type(spot) is "King":

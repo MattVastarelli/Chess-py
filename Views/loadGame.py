@@ -3,7 +3,7 @@ import tkinter.messagebox as mb
 
 
 class LoadFromFile():
-    def __init__(self):
+    def __init__(self, game_instance):
         self.loadGame = Tk()
         self.loadGame.geometry("200x115")
         self.loadGame.title("Load Game")
@@ -12,6 +12,7 @@ class LoadFromFile():
         self.event_cancel = ''
         self.text_box = ''
         self.dictofpieces = dict()
+        self.game = game_instance
 
     def __repr__(self):
         return str(self.dictofpieces)
@@ -47,34 +48,38 @@ class LoadFromFile():
                 numberholder = ''
                 test=[line.strip() for line in open(text1, 'r')]
                 for line in test:
-                    for c in line:
-                        if c.isdigit() and y == -1:
-                            y = int(c)
-                        elif c.isdigit() and x == -1:
-                            x = int(c)
-                        elif x != -1 and y != -1:
-                            numberholder += str(x)
-                            numberholder += str(y)
-                            x = -1
-                            y = -1
-                        elif c == '@' and counter == 0:
-                            counter += 1
-                        elif c != '@' and counter == 1 and c.isalpha():
-                            color += c
-                        elif c == '@' and counter == 1:
-                            counter += 1
-                        elif c != '@' and counter == 2 and c.isalpha():
-                            piece += c
+                    print(line)
+                    if line == "False":
+                        self.game.filp_trun()
+                    else:
+                        for c in line:
+                            if c.isdigit() and y == -1:
+                                y = int(c)
+                            elif c.isdigit() and x == -1:
+                                x = int(c)
+                            elif x != -1 and y != -1:
+                                numberholder += str(x)
+                                numberholder += str(y)
+                                x = -1
+                                y = -1
+                            elif c == '@' and counter == 0:
+                                counter += 1
+                            elif c != '@' and counter == 1 and c.isalpha():
+                                color += c
+                            elif c == '@' and counter == 1:
+                                counter += 1
+                            elif c != '@' and counter == 2 and c.isalpha():
+                                piece += c
 
-                    totPiece = color+piece
-                    self.dictofpieces[numberholder] = totPiece
-                    piece = ''
-                    color = ''
-                    counter = 0
-                    numberholder = ''
-                    if y != -1 or x != -1:
-                        y = -1
-                        x = -1
+                        totPiece = color+piece
+                        self.dictofpieces[numberholder] = totPiece
+                        piece = ''
+                        color = ''
+                        counter = 0
+                        numberholder = ''
+                        if y != -1 or x != -1:
+                            y = -1
+                            x = -1
                 self.loadGame.quit()
             except FileNotFoundError:
                 mb.showinfo("ERROR", "File Does Not Exist!")
