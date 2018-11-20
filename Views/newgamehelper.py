@@ -1,7 +1,5 @@
-from Views import GUI
 from Views import guiBoard
 from tkinter import *
-from tkinter import messagebox as mb
 
 
 class NewGame:
