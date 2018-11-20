@@ -13,8 +13,10 @@ class LoadFromFile:
         self.text_box = ''
         self.dictofpieces = dict()
         self.game = game_instance
+        self.turn = ""
 
     def __repr__(self):
+
         return str(self.dictofpieces)
 
     def build_load_game(self, parent):
@@ -48,9 +50,10 @@ class LoadFromFile:
                 number_holder = ''
                 test = [line.strip() for line in open(text1, 'r')]
                 for line in test:
-                    print(line)
-                    if line == "False":
-                        self.game.filp_trun()
+                    #print(line)
+                    if line == "White" or line == "Black":
+                        print(line)
+                        self.turn = line
                     else:
                         for c in line:
                             if c.isdigit() and y == -1:
@@ -80,6 +83,7 @@ class LoadFromFile:
                         if y != -1 or x != -1:
                             y = -1
                             x = -1
+                self.dictofpieces["turn"] = self.turn
                 self.loadGame.quit()
             except FileNotFoundError:
                 mb.showinfo("ERROR", "File Does Not Exist!")

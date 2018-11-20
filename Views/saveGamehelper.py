@@ -64,7 +64,7 @@ class SaveToFile:
                         continue
                 x = 0
                 y += 1
-            fn.write(str(self.game.getWhiteTurn()))
+            fn.write(str(self.game.get_turn_color()))
             fn.write('\n')
             fn.write('\n')
             fn.close()
