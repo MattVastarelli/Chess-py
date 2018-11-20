@@ -126,7 +126,8 @@ class GuiObjects:
 
                                         # check if the game is over
                                         if self.game.is_game_done(self.to_spot) is True:
-                                            print(self.game.get_piece_color(self.from_spot) + " Won")
+                                            mb.showinfo('Game Over', self.game.get_piece_color(self.from_spot) + " Won")
+                                            exit()
 
                                         # update the board
                                         self.update(self.to_spot, self.from_spot)
@@ -157,10 +158,6 @@ class GuiObjects:
                                         # take the piece
                                         self.game.take_piece(self.to_spot)
 
-                                        # check if the game is over
-                                        if self.game.is_game_done(self.to_spot) is True:
-                                            print(self.game.get_piece_color(self.from_spot) + " Won")
-
                                         look_up_name = self.game.get_piece_color(self.from_spot) + \
                                             self.game.get_piece_type(self.from_spot)
 
@@ -172,6 +169,11 @@ class GuiObjects:
                                                                                                        height="7")
                                         self.gui_board[row][col].configure(image=self.icons.get_icon(look_up_name),
                                                                            width="143", height="110")
+
+                                        # check if the game is over
+                                        if self.game.is_game_done(self.to_spot) is True:
+                                            mb.showinfo('Game Over', self.game.get_piece_color(self.from_spot) + " Won")
+                                            exit()
 
                                         # flip the turn so the other color could move
                                         self.game.filp_trun()
