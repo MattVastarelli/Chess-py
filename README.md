@@ -30,6 +30,14 @@ Copy or Download the main Chess-py file to the location you wish to keep the pro
 * Enter the following command into the terminal or command prompt: python3 Chess-main.py
 
 
+### Screen Capture
+##### Main Menu
+![main menu](https://github.com/MattVastarelli/Chess-py/blob/master/ref/Menu.PNG "Main Menu")
+
+##### Game Board
+![game board](https://github.com/MattVastarelli/Chess-py/blob/master/ref/board.PNG "Game Board")
+
+
 #### Authors
 * Evan Perry
 * Matthew Vastarelli
