@@ -145,12 +145,16 @@ class GuiBoard:
 
 
 class LoadGuiBoard(GuiBoard):
+    def __init__(self):
+        GuiBoard.__init__(self)
+        self.currentTurn = ""
     def build_chess_board(self, parent, dictofPieces=None):
         outer = tk.Frame(parent, border=5, relief='sunken')
         inner = tk.Frame(outer)
         inner.pack()
         clr = True
         piece_to_place = False
+        turnfound = False
 
         row_num = 0
         # This for loop builds the board while also alternating sandybrown and saddlebrown squares
@@ -166,6 +170,14 @@ class LoadGuiBoard(GuiBoard):
                         if compTuple == key:
                             piece_to_place = True
                             break
+                        elif key == "turn" and turnfound == False:
+                            turnfound = True
+                            if dictofPieces.get(key) == "turnWhite":
+                                self.currentTurn = "White"
+                            elif dictofPieces.get(key) == "turnBlack":
+                                self.currentTurn = "Black"
+                            game = self.gui_objects.get_game()
+                            game.set_turn_color(self.currentTurn)
                         else:
                             piece_to_place = False
 
@@ -220,6 +232,11 @@ class LoadGuiBoard(GuiBoard):
             row_num += 1
 
         return outer
+    def whichTurn (self):
+        if self.currentTurn == "White":
+            mb.showinfo("Info", "It's White's Turn!")
+        elif self.currentTurn == "Black":
+            mb.showinfo("Info", "It's Black's Turn!")
 
     def show_board(self, dictofPieces=None):
         self.event_new = self.function_tabs
@@ -236,6 +253,8 @@ class LoadGuiBoard(GuiBoard):
         return None
 
     def run(self, dictofPieces=None):
+        print(dictofPieces)
         self.show_board(dictofPieces)
+        self.whichTurn()
         tk.mainloop()
 

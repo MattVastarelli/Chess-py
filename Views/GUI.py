@@ -42,12 +42,13 @@ class SplashScreen:
                 tempNum += c
             elif c.isalpha():
                 tempPiece += c
+                if tempPiece == "turnWhite" or tempPiece == "turnBlack":
+                    dictofPieces['turn'] = tempPiece
             elif c == ',' and tempPiece != '':
                 tempTuple = (int(tempNum[0]), int(tempNum[1]))
                 dictofPieces[tempTuple] = tempPiece
                 tempNum = ''
                 tempPiece = ''
-
         self.welcome.destroy()
         gui = guiBoard.LoadGuiBoard()
         gui.run(dictofPieces)
