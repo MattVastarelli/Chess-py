@@ -26,8 +26,8 @@ class GuiBoard:
         menus = (("File", (("New Game", self.event_new),
                       ("Save Game", self.event_save),
                       ("Exit", self.event_exit))),
-            ("Help", (("Help", self.event_help),
-                      ("About", self.event_about))),)
+            ("Help", (("Help", self.help),
+                      ("About", self.about))),)
 
         menubar = tk.Menu(parent)
 
@@ -39,12 +39,28 @@ class GuiBoard:
 
         return menubar
 
-    # This is just to represent what we plan to do later, meaningless at this point.
-    def function_tabs(self,):
-        mb.showinfo("Test", "to be developed later")
+    def about(self):
+        mb.showinfo("About", "Authors: Matthew and Evan")
 
-    # Saves the game, opens the GUI dialog that performs save game.
+        return None
+
+    def help(self,):
+        window = tk.Toplevel()
+        window.title("Help")
+
+        text = tk.Label(window,  text="https://www.chess.com/learn-how-to-play-chess")
+        text.pack()
+
+        text1 = tk.Label(window, text="View the Github Repo: https://github.com/MattVastarelli/Chess-py")
+        text1.pack()
+
+        text2 = tk.Label(window,  text="Contact the devs: chessworks@yahoo.com")
+        text2.pack()
+
+        return None
+
     def eventSave(self,):
+        # Saves the game, opens the GUI dialog that performs save game.
         esgui = saveGamehelper.SaveToFile(self.gui_objects.game)
         esgui.run_save()
 
@@ -129,8 +145,6 @@ class GuiBoard:
         self.event_new = self.new_game
         self.event_save = self.eventSave
         self.event_exit = self.top.destroy
-        self.event_help = self.function_tabs
-        self.event_about = self.function_tabs
 
         menubar = self.build_menu(self.top)
         self.top["menu"] = menubar

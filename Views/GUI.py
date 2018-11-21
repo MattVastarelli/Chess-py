@@ -21,8 +21,20 @@ class SplashScreen:
         self.game = ''
         self.gui_objects = guiChessButton.GuiObjects()
          
-    def function_tabs(self,):
-        mb.showinfo("Test")
+    def help(self,):
+        window = tk.Toplevel()
+        window.title("Help")
+
+        text = tk.Label(window,  text="https://www.chess.com/learn-how-to-play-chess")
+        text.pack()
+
+        text1 = tk.Label(window, text="View the Github Repo: https://github.com/MattVastarelli/Chess-py")
+        text1.pack()
+
+        text2 = tk.Label(window,  text="Contact the devs: chessworks@yahoo.com")
+        text2.pack()
+
+        return None
 
     def about_button_action(self):
         mb.showinfo("About", "Authors: Matthew and Evan")
@@ -89,7 +101,7 @@ class SplashScreen:
         return outer
 
     def show_splash_screen(self):
-        self.event_help = self.function_tabs
+        self.event_help = self.help
         self.event_about = self.about_button_action
 
         splash = self.build_splash_screen(self.welcome)
