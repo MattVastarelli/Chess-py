@@ -1,6 +1,7 @@
 # Chess
 
 ## About
+A Python implementation of the chess board game using Tkinter as the graphics engine.
 
 ### Dependencies
 * Python
@@ -28,6 +29,14 @@ Copy or Download the main Chess-py file to the location you wish to keep the pro
 ### Program Execution
 * Using the terminal or command prompt navigate to the Chess-py file
 * Enter the following command into the terminal or command prompt: python3 Chess-main.py
+
+
+### Screen Capture
+#### Main Menu
+![main menu](https://github.com/MattVastarelli/Chess-py/blob/master/ref/Menu.PNG "Main Menu")
+
+#### Game Board
+![game board](https://github.com/MattVastarelli/Chess-py/blob/master/ref/board.PNG "Game Board")
 
 
 #### Authors
