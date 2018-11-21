@@ -104,6 +104,10 @@ class GuiObjects:
 
                                 # flip the turn so the other color could move
                                 self.game.filp_trun()
+                            else:
+                                mb.showerror("Error", "Invalid Move")
+                        else:
+                            mb.showerror("Error", "Invalid Move")
                     else:
                         # check if the color of the selected piece does not match the spot thus can take the piece
                         if self.game.get_piece_color(self.to_spot) is not self.game.get_piece_color(self.from_spot):
@@ -150,6 +154,8 @@ class GuiObjects:
 
                                         # flip the turn so the other color could move
                                         self.game.filp_trun()
+                                else:
+                                    mb.showerror("Error", "Invalid Move")
                             else:
                                 # call the method to check if the move is valid
                                 if self.game.is_move_valid(self.from_spot, self.to_spot, move) is True:
@@ -177,6 +183,14 @@ class GuiObjects:
 
                                         # flip the turn so the other color could move
                                         self.game.filp_trun()
+                                    else:
+                                        mb.showerror("Error", "Invalid Move")
+                                else:
+                                    mb.showerror("Error", "Invalid Move")
+                        else:
+                            mb.showerror("Error", "It is currently " + self.game.get_turn_color() + " turn")
+                else:
+                    mb.showerror("Error", "It is currently " + self.game.get_turn_color() + " turn")
 
             # reset the spot locations
             self.from_spot = (0, 0)
