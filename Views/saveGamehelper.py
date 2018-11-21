@@ -3,6 +3,7 @@ import tkinter.messagebox as mb
 
 
 class SaveToFile:
+    #Save to file constructor
     def __init__(self, game_instance):
         self.saveGame = Tk()
         self.saveGame.geometry("200x115")
@@ -12,10 +13,10 @@ class SaveToFile:
         self.event_cancel = ''
         self.text_box = ''
         self.game = game_instance
-
+    #Returns a string for the filename
     def __repr__(self):
         return str(self.filename)
-
+    #this function build the frame
     def build_save_game(self, parent):
         frame1 = Frame(self.saveGame)
         frame1.pack(expand=True)
@@ -30,12 +31,13 @@ class SaveToFile:
             if i == 2:
                 cancel_button = Button(frame1, text="Cancel", width="9", height="1", command=self.event_cancel)
                 cancel_button.pack(side=RIGHT)
-
+    # readout function gets test typed in by user
     def readout_file(self):
         text1 = self.text_box.get()
-        if text1 == '':
+        if text1 == '': #if no entry, error displayed
             mb.showinfo("ERROR!", "You must type in a name!")
             self.saveGame.destroy()
+        # if entry we append .txt to make it a test file, then we read out the piece color, position and type and current turn to a file
         else:
             text1 += ".txt"
             fn = open(text1, 'w')
@@ -69,14 +71,14 @@ class SaveToFile:
             fn.write('\n')
             fn.close()
             self.saveGame.destroy()
-
+    # This creates the main display
     def show_save_game(self):
         self.event_save = self.readout_file
         self.event_cancel = self.saveGame.destroy
         sg = self.build_save_game(self.saveGame)
 
         return None
-
+    # This runs the GUI
     def run_save(self):
         self.show_save_game()
         self.saveGame.mainloop()

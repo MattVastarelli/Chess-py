@@ -3,6 +3,7 @@ import tkinter.messagebox as mb
 
 
 class LoadFromFile:
+    #Constructor for LoadFromFIle
     def __init__(self, game_instance):
         self.loadGame = Tk()
         self.loadGame.geometry("200x115")
@@ -16,9 +17,10 @@ class LoadFromFile:
         self.turn = ""
 
     def __repr__(self):
-
+        #Reutnrs a dictionary as a string to the caller.
         return str(self.dictofpieces)
 
+    #This method builds the frame that takes the file input from the user
     def build_load_game(self, parent):
         frame1 = Frame(self.loadGame)
         frame1.pack(expand=True)
@@ -34,11 +36,13 @@ class LoadFromFile:
                 cancel_button = Button(frame1, text="Cancel", width="9", height="1", command=self.event_cancel)
                 cancel_button.pack(side=RIGHT)
 
+    #This method takes the file name entered by the user, and opens it and loads the data from it.
     def load_from_file(self):
         text1 = self.text_box.get()
-        if text1 == '':
+        if text1 == '': #If no file name is entered, we display a message
             mb.showinfo("ERROR!", "File name required!")
             self.loadGame.destroy()
+        #Otherwise we read in from the file and a create a dictionary of all pieces and the turn.
         else:
             text1 += ".txt"
             try:
@@ -50,7 +54,6 @@ class LoadFromFile:
                 number_holder = ''
                 test = [line.strip() for line in open(text1, 'r')]
                 for line in test:
-                    #print(line)
                     if line == "White" or line == "Black":
                         print(line)
                         self.turn = line
@@ -85,13 +88,14 @@ class LoadFromFile:
                             x = -1
                 self.dictofpieces["turn"] = self.turn
                 self.loadGame.quit()
-            except FileNotFoundError:
+            except FileNotFoundError: #in case file not found.
                 mb.showinfo("ERROR", "File Does Not Exist!")
                 self.loadGame.destroy()
 
     def destroy_windows(self):
         self.loadGame.destroy()
-
+    
+    #This method builds the main didsplay and creates the event handler associations.
     def show_load_game(self):
         self.load_save = self.load_from_file
         self.event_cancel = self.loadGame.destroy
@@ -99,6 +103,7 @@ class LoadFromFile:
 
         return None
 
+    #Here we run the mainloop that displays the content on the screen.
     def run_load(self):
         self.show_load_game()
         self.loadGame.mainloop()
