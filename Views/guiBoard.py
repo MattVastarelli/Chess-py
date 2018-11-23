@@ -16,6 +16,7 @@ class GuiBoard:
         self.event_help = ''
         self.event_about = ''
         self.event_exit = ''
+        self.save = ''
         self.icons = guiIcons.GuiIcons()
         self.white_order = self.icons.white_order()
         self.black_order = self.icons.black_order()
@@ -134,7 +135,7 @@ class GuiBoard:
     def show_board(self):
         # Creates the event handling associations and the creates tk.top and makes it ready to be displayed.
         self.event_new = self.new_game
-        self.event_save = self.event_save
+        self.save = self.event_save
         self.event_exit = self.top.destroy
 
         menubar = self.build_menu(self.top)
@@ -149,8 +150,9 @@ class GuiBoard:
         self.show_board()
         tk.mainloop()
 
-# This class inherits GuiBoard, this allows for a game to be resummed from a file.
+
 class LoadGuiBoard(GuiBoard):
+    # This class inherits GuiBoard, this allows for a game to be resumed from a file.
     # constructor
     def __init__(self):
         GuiBoard.__init__(self)
@@ -246,7 +248,7 @@ class LoadGuiBoard(GuiBoard):
 
         return outer
 
-    def whichTurn (self):
+    def which_turn(self):
         # We display a message of what turn it is, so the user knows.
         if self.currentTurn == "White":
             mb.showinfo("Info", "It's White's Turn!")
@@ -257,11 +259,11 @@ class LoadGuiBoard(GuiBoard):
 
     def show_board(self, dictofPieces=None):
         # Creates the event handle assignment and allows for the tkinter top level to be created and packed.
-        self.event_new = self.function_tabs
-        self.event_save = self.eventSave
+        self.event_new = self.new_game
+        self.save = self.event_save
         self.event_exit = self.top.destroy
-        self.event_help = self.function_tabs
-        self.event_about = self.function_tabs
+        self.event_help = self.help
+        self.event_about = self.about
 
         menubar = self.build_menu(self.top)
         self.top["menu"] = menubar
@@ -270,10 +272,9 @@ class LoadGuiBoard(GuiBoard):
 
         return None
 
-    # This runs the display and gets mainloop going.
     def run(self, dictofPieces=None):
+        # This runs the display and gets mainloop going.
         print(dictofPieces)
         self.show_board(dictofPieces)
-        self.whichTurn()
+        self.which_turn()
         tk.mainloop()
-

@@ -1,6 +1,6 @@
 # Chess Game
 # Authors: Matthew Vastarelli, Evan Perry
- # Github Repo: https://github.com/MattVastarelli/Chess-py
+# Github Repo: https://github.com/MattVastarelli/Chess-py
 
 
 def main():
@@ -13,6 +13,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-

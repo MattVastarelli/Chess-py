@@ -117,4 +117,3 @@ class SplashScreen:
         self.show_splash_screen()       
         tk.mainloop()
 
-
