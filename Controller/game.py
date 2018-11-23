@@ -6,8 +6,6 @@ class Game:
     def __init__(self):
         self.white_turn = True
         self.black_turn = False
-        self.captured_white_pieces = list()
-        self.captured_black_pieces = list()
         # instantiate the board object
         self.board = board.Board()
         self.board.fill_board()
@@ -70,18 +68,13 @@ class Game:
         # set the is alive flag to false
         piece.remove_piece()
 
-        if piece.get_color() is "Black":
-            self.captured_black_pieces.append(piece)
-        else:
-            self.captured_white_pieces.append(piece)
+        return None
 
     def spot_is_zero(self, spot):
         spot = self.board.get_spot(spot[0], spot[1])
         if spot is 0:
-            print(spot)
             return True
         else:
-            print(spot)
             return False
 
     def filp_trun(self):
@@ -169,7 +162,6 @@ class Game:
 
     def pawn_capture(self, from_spot, to_spot):
         piece = self.board.get_spot(from_spot[0], from_spot[1])
-        print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
         # checks if a pawn can capture a piece
         if self.get_piece_color(from_spot) is "White":
             if self.find_move_value(from_spot, to_spot) in [(-1, 1), (-1, -1)]:
@@ -191,7 +183,6 @@ class Game:
     def is_move_valid(self, from_spot, to_spot, move):
         # checks to see  if a given move sent as a tuple is valid
         piece = self.board.get_spot(from_spot[0], from_spot[1])
-        print(piece.get_display_name() + "From: " + str(from_spot) + " To: " + str(to_spot))
         if piece is 0:
             return False
         elif piece.get_name() is "Pawn":

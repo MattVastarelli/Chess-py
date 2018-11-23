@@ -1,54 +1,57 @@
 import tkinter as tk
 import webbrowser
 
-#Helper class, that displays help info
-class help:
+
+class Help:
+    # Helper class, that displays help info
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Help")
 
-    #opens a webbrowser with direcitons to play chess
-    def openHowTo (self, event):
+    def open_how_to(self, event):
+        # opens a web browser with directions to play chess
         webbrowser.open_new(r"https://www.chess.com/learn-how-to-play-chess")
 
-    #opens webbrowser to our git hub
-    def openGitHub (self, event):
+    def open_git_hub(self, event):
+        # opens web browser to our github
         webbrowser.open_new(r"https://github.com/MattVastarelli/Chess-py")
+        return None
 
-    #opens default email client
-    def email (self, event):
+    def email(self, event):
+        # opens default email client
         webbrowser.open('mailto:chessworks@yahoo.com', new=1)
+        return None
 
-    #builds the display with links to click on.
-    def buildhelper(self, parent):
-        frame1 = tk.Frame (self.window)
+    def build_helper(self, parent):
+        # builds the display with links to click on.
+        frame1 = tk.Frame(self.window)
         frame1.pack(expand=True)
 
         text = tk.Label(frame1,  text="https://www.chess.com/learn-how-to-play-chess", cursor = "hand2")
         text.pack()
-        text.bind("<Button-1>", self.openHowTo)
+        text.bind("<Button-1>", self.open_how_to)
 
         text1 = tk.Label(frame1, text="View the Github Repo: https://github.com/MattVastarelli/Chess-py", cursor = "hand2")
         text1.pack()
-        text1.bind("<Button-1>", self.openGitHub)
+        text1.bind("<Button-1>", self.open_git_hub)
 
         text2 = tk.Label(frame1,  text="Contact the devs: chessworks@yahoo.com", cursor = "hand2")
         text2.pack()
         text2.bind("<Button-1>", self.email)
 
-        button_OK = tk.Button(frame1, text = "OK", command = self.window.destroy)
-        button_OK.pack()
+        button_ok = tk.Button(frame1, text="OK", command=self.window.destroy)
+        button_ok.pack()
 
         return frame1
 
-    #Builds the frame and packs it in the main windows
     def show_help(self):
-        helper = self.buildhelper(self.window)
+        # Builds the frame and packs it in the main windows
+        helper = self.build_helper(self.window)
         helper.pack()
 
         return None
 
-    #Runs the program
     def run(self):
+        # Runs the program
         self.show_help()
         tk.mainloop()

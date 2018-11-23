@@ -5,11 +5,10 @@ from Views import guiBoard
 from Views import loadGame
 from Views import guiChessButton
 from Views import helpHelper
-import webbrowser
 
 
 class SplashScreen:
-    #Constructor for splashscreen, user will see splash screen before anything else.
+    # Constructor for splash screen, user will see splash screen before anything else.
     def __init__(self):
         self.welcome = tk.Tk()
         self.welcome.geometry("500x700")
@@ -24,24 +23,28 @@ class SplashScreen:
         self.game = ''
         self.gui_objects = guiChessButton.GuiObjects()
 
-    #Brings up the help box with links to click 
     def help(self,):
-       runhelp = helpHelper.help()
-       runhelp.run()
+        # Brings up the help box with links to click
+        run_help = helpHelper.Help()
+        run_help.run()
 
     def about_button_action(self):
         mb.showinfo("About", "Authors: Matthew and Evan")
 
-    #If new game is clicked, Splash Screen is destroyed and game is loaded.
     def start_game(self):
+        # If new game is clicked, Splash Screen is destroyed and game is loaded.
         self.welcome.destroy()
         gui = guiBoard.GuiBoard()
         gui.run()
     
-    #This resumes the game
+
     def resume_game(self):
-        # read from the save file and start the new game, taks a string self.game that is populated by load_game and convertes into a dictionary
+        # This resumes the game
+        # read from the save file and start the new game,
+        # takes a string self.game that is populated by load_game
+        # and converts into a dictionary
         # then the dictionary is passed to guiBoard which starts the game
+
         dictofPieces = dict()
         tempNum = ''
         tempPiece = ''
@@ -63,8 +66,8 @@ class SplashScreen:
 
         return None
 
-    # This function gets string from file when Load game is selected
     def load_game(self,):
+        # This function gets string from file when Load game is selected
         # instantiate the class with a reference to the main controller class
         lsgui = loadGame.LoadFromFile(self.gui_objects.game)
         lsgui.run_load()
@@ -72,8 +75,10 @@ class SplashScreen:
         lsgui.destroy_windows()
         self.resume_game()
 
-    #This method builds the frame and label where the buttons are displayed, and the actions are assigned to the buttons
     def build_splash_screen(self, parent):
+        # This method builds the frame and label where the buttons are displayed,
+        # and the actions are assigned to the buttons
+
         backpic = tk.Label(self.welcome, image=self.tkphoto1)
         backpic.place(x=0, y=0, relwidth=1, relheight=1)
         outer = tk.Frame(parent, border=5, background="sandybrown", relief='sunken')
@@ -98,17 +103,17 @@ class SplashScreen:
         
         return outer
 
-    # Creats the top level GUI and creates the final assignments for event handling.
     def show_splash_screen(self):
+        # Create the top level GUI and creates the final assignments for event handling.
         self.event_help = self.help
         self.event_about = self.about_button_action
 
         splash = self.build_splash_screen(self.welcome)
         splash.pack()
         return None
-    
-    #We now run the mainloop that displays the GUI on the screen.
+
     def run(self):
+        # We now run the mainloop that displays the GUI on the screen.
         self.show_splash_screen()       
         tk.mainloop()
 
