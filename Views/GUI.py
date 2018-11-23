@@ -3,7 +3,7 @@ import tkinter.messagebox as mb
 from PIL import Image, ImageTk
 from Views import guiBoard
 from Views import loadGame
-from Views import guiChessButton
+from Controller import guiChessButton
 from Views import helpHelper
 
 

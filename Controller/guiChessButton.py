@@ -1,5 +1,5 @@
 from Controller import game
-from Views import guiIcons
+from Models import guiIcons
 import tkinter.messagebox as mb
 
 
