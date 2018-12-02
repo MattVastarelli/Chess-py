@@ -9,11 +9,9 @@
 4. [Program Execution](#Program-Execution)
 5. [GUI](#GUI)
 
-***
 ## About
 A Python implementation of the chess board game using Tkinter as the graphics engine.
 
-***
 ## Dependencies
 * Python
 * tkinter
