@@ -6,7 +6,7 @@
 1. [About](#About)
 2. [Dependencies](#Dependencies)
 3. [Installation](#Installation)
-4. [Program Execution](#ProgramExecution)
+4. [Program Execution](#Program-Execution)
 5. [GUI](#GUI)
 
 ***
