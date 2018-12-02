@@ -1,1 +1,5 @@
-
+Python
+tkinter
+tkinter.messagebox
+deque 
+Pillow
